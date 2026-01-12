@@ -1,0 +1,313 @@
+# Code Review v1 - Project Documentation
+
+## Overview
+This is a prototype application replicating the SonarQube Cloud interface. The design uses the exact color palette from SonarQube while maintaining flexibility for different fonts.
+
+## Tech Stack
+- **Framework**: Next.js 16.1.1 (React 19.2.3)
+- **Styling**: Custom CSS with design system + Tailwind CSS v4
+- **TypeScript**: v5
+
+## Project Structure
+
+```
+code-review-v1/
+├── app/
+│   ├── components/
+│   │   └── PullRequestsPage.tsx    # Main Pull Requests page component
+│   ├── pr/
+│   │   └── [id]/
+│   │       └── page.tsx            # PR detail page (dynamic route)
+│   ├── design-system.css           # Color palette and design tokens
+│   ├── styles.css                  # Component-specific styles
+│   ├── globals.css                 # Global styles and imports
+│   ├── layout.tsx                  # Root layout
+│   ├── page.tsx                    # Home page (renders PullRequestsPage)
+│   └── favicon.ico
+├── public/
+│   └── Sonar Qube Cloud.svg        # SonarQube Cloud logo
+├── package.json
+└── README.md
+```
+
+## Design System
+
+### Custom Design System (SonarQube Cloud-inspired)
+
+The design system uses a **custom color palette** inspired by SonarQube Cloud, defined in `app/design-system.css` with CSS custom properties. The application is **dark mode by default**.
+
+> **Note**: This project initially attempted to integrate SonarSource's official Echoes design system but was reverted to use this custom design system for better control and simplicity.
+
+#### Primary Colors
+- `--color-bg-primary`: #1E212E (Main content background)
+- `--color-bg-secondary`: #3c4248
+- `--color-bg-tertiary`: #637192
+- `--color-sidebar-bg`: #2B2F3F (Sidebar and top nav background)
+- `--color-sidebar-hover`: #1d212f
+- `--color-content-bg`: #1E212E
+- `--color-card-bg`: #393f45 (Card/Panel background - mostly unused, cards use transparent with borders)
+- `--color-card-hover`: #1d212f
+
+#### Text Colors
+- `--color-text-primary`: #ffffff
+- `--color-text-secondary`: #e6e6e6
+- `--color-text-tertiary`: #b4b8bd
+- `--color-text-muted`: #8a8f95
+- `--color-text-disabled`: #637192
+
+#### Accent Colors
+- `--color-accent-primary`: #d4a5ff (Purple - primary actions)
+- `--color-accent-primary-hover`: #e5d5ff
+- `--color-accent-primary-active`: #ede2ff
+- `--color-accent-secondary`: #4b9fd8 (Blue - icons, links)
+- `--color-accent-secondary-hover`: #6bb8ec
+- `--color-link`: #4b9fd8
+- `--color-link-hover`: #6bb8ec
+
+#### Status Colors
+- `--color-success`: #4caf50 (Green - Passed status)
+- `--color-success-bg`: rgba(76, 175, 80, 0.15)
+- `--color-success-text`: #81c784
+- `--color-warning`: #ff9800 (Orange - Warning badges)
+- `--color-warning-bg`: rgba(255, 152, 0, 0.15)
+- `--color-warning-text`: #ffb74d
+- `--color-error`: #f44336 (Red - Failed status)
+- `--color-error-bg`: rgba(244, 67, 54, 0.15)
+- `--color-error-text`: #ef5350
+- `--color-info`: #2196f3
+- `--color-info-bg`: rgba(33, 150, 243, 0.15)
+- `--color-info-text`: #64b5f6
+
+#### Badge Colors
+- `--color-badge-new`: #d4a5ff (Purple - "New" badge)
+- `--color-badge-new-bg`: rgba(212, 165, 255, 0.2)
+- `--color-badge-beta`: #b084f7 (Purple/Pink - "Beta" badge)
+- `--color-badge-beta-bg`: rgba(176, 132, 247, 0.2)
+- `--color-badge-private`: #8a8f95
+- `--color-badge-private-bg`: #3c4248
+
+#### Border Colors
+- `--color-border-primary`: #4d5463
+- `--color-border-secondary`: #3a3f45
+- `--color-border-subtle`: #2e3238
+- `--color-border-focus`: #4b9fd8
+
+#### Additional Design Tokens
+**Spacing**: `--spacing-xs` (4px), `--spacing-sm` (8px), `--spacing-md` (16px), `--spacing-lg` (24px), `--spacing-xl` (32px), `--spacing-2xl` (48px)
+
+**Border Radius**: `--radius-sm` (3px), `--radius-md` (4px), `--radius-lg` (6px), `--radius-xl` (8px), `--radius-full` (9999px)
+
+**Shadows**: `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--shadow-xl` (all with dark mode-appropriate opacity)
+
+**Transitions**: `--transition-fast` (150ms), `--transition-base` (200ms), `--transition-slow` (300ms)
+
+### Usage
+All colors are accessible via CSS custom properties:
+
+```css
+.my-element {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-primary);
+}
+```
+
+## Pages
+
+### Pull Requests Page (Homepage)
+**Route**: `/` (localhost:3000)
+
+**Features**:
+- ✅ Top navigation bar with SonarQube Cloud logo and navigation links (My Projects, My Issues, My Portfolios, Explore)
+- ✅ Left sidebar with project selector and navigation menu
+- ✅ Pull Requests link is marked as active in sidebar
+- ✅ Breadcrumb navigation
+- ✅ Page header with warning badge
+- ✅ Search bar and filters
+- ✅ Pull requests list (10 dummy items) - clickable, links to detail pages
+- ✅ Status indicators with green checkmarks
+- ✅ Floating action button (bottom right)
+
+**Status**: Links to PR detail pages functional
+
+### PR Detail Page
+**Route**: `/pr/[id]` (e.g., `/pr/35`)
+
+**Features**:
+- ✅ Same top navigation and sidebar as homepage
+- ✅ Breadcrumb with PR number
+- ✅ PR title with version hashtag
+- ✅ "Review changes" button (top right, same line as title)
+- ✅ Tab navigation: Context and Files
+- ✅ **Context Tab**:
+  - Collapsible Description section with PR details
+  - Collapsible Discussion section with:
+    - SonarQube bot comment with Quality Gate card
+    - User comments
+- ✅ **Files Tab**:
+  - Left sidebar: Groups panel (0/1 groups)
+  - Quality Gate summary with metrics (Passed status)
+  - File change cards with:
+    - Title, "Needs review" badge
+    - File count, additions/deletions stats
+    - Description and review focus
+    - Code diff viewer with syntax highlighting (YAML)
+
+**Design Notes**:
+- All card components use transparent backgrounds with borders (stroke-only design)
+- Scrollbar always visible to prevent layout shift
+
+## Running the Project
+
+### Development Server
+```bash
+npm run dev
+```
+The app will be available at: http://localhost:3000
+
+### Build for Production
+```bash
+npm run build
+npm start
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## Component Details
+
+### PullRequestsPage Component
+Location: `app/components/PullRequestsPage.tsx`
+
+**Sections**:
+1. **Top Navigation**
+   - Logo (SonarQube cloud - actual SVG from `/public/Sonar Qube Cloud.svg`)
+   - Main navigation (My Projects, My Issues, My Portfolios, Explore) - left aligned next to logo
+   - Right actions (search, notifications, user menu icons)
+
+2. **Sidebar**
+   - Project selector dropdown
+   - Navigation sections:
+     - Overview & Dashboards
+     - Analysis (Summary, Issues, Security Hotspots, etc.)
+     - Information (Pull Requests, Branches)
+   - Badges for "New" and "Beta" features
+   - Count indicators
+
+3. **Main Content**
+   - Breadcrumb trail
+   - Page title with warning badge
+   - Search and filter controls
+   - Pull requests list with:
+     - PR number and title
+     - Status (Passed/Failed)
+     - Icons
+     - Timestamps
+     - Commit hashes
+
+4. **Floating Action Button**
+   - Fixed position (bottom right)
+   - Gradient background
+   - Checkmark icon
+
+## Styling Architecture
+
+### CSS Organization
+The CSS is organized in three layers, loaded in this specific order:
+
+1. **design-system.css**: Core design tokens (colors, spacing, shadows, etc.)
+   - Custom SonarQube Cloud-inspired color palette
+   - Contains all CSS custom properties used throughout the app
+
+2. **styles.css**: Component-specific styles and layout
+   - Cards use `background-color: transparent` with borders (stroke-only design)
+   - Body has `overflow-y: scroll` to prevent layout shift
+   - Dark mode enforced with `!important` flags
+
+3. **globals.css**: Global imports and Tailwind configuration
+   - Imports design-system.css and styles.css BEFORE Tailwind
+   - Forces dark mode by default with explicit color values
+   - Import order is critical: custom CSS must load before Tailwind to prevent overrides
+
+### Dark Mode
+The application is **dark mode by default** with no light mode option:
+- Root variables set to dark colors (`--background: #0a0a0a`, `--foreground: #ededed`)
+- Body background and text color enforced with `!important` flags
+- All components styled using dark theme colors from design-system.css
+
+### Responsive Design
+- Desktop: Full sidebar and all columns visible
+- Tablet (< 1024px): Condensed navigation, smaller sidebar
+- Mobile (< 768px): Collapsible sidebar, simplified PR list layout
+
+## Navigation Structure
+```
+/ (Pull Requests List)
+  └── /pr/:id (Pull Request Detail)
+      ├── Context tab (Description, Discussion)
+      └── Files tab (Groups, Quality Gate, File changes with diffs)
+```
+
+## Future Development
+
+### Completed Features
+- ✅ Click-through functionality for PR items
+- ✅ PR detail page with Context and Files tabs
+- ✅ Collapsible sections
+- ✅ Code diff viewer with syntax highlighting
+
+### Planned Features
+- [ ] Additional pages (Summary, Issues, Dashboard, etc.)
+- [ ] Interactive search and filtering
+- [ ] Real data integration
+- [ ] User authentication
+- [ ] Functional collapsible code diffs
+- [ ] Review comments functionality
+
+## Design Decisions
+
+### Color Scheme
+- Background colors: #2B2F3F (sidebar/nav), #1E212E (content area)
+- Cards use transparent backgrounds with stroke/borders only (no fill)
+- Maintains SonarQube Cloud's exact color palette
+
+### Layout
+- Scrollbar always visible (`overflow-y: scroll` on body) to prevent layout shift
+- PR title positioned above tabs with Review button on the same line
+- Flexible layout that adapts to content
+
+## Notes
+- All content is currently dummy data
+- Navigation between pages is functional (PR list → PR detail)
+- Tab switching works (Context ↔ Files)
+- Collapsible sections functional (Description, Discussion)
+- Fonts use system defaults (customizable)
+
+## Resources
+- Design reference: SonarQube Cloud interface screenshots
+- Framework: [Next.js Documentation](https://nextjs.org/docs)
+- Styling: [Tailwind CSS v4](https://tailwindcss.com/docs)
+
+---
+
+## Development History
+
+### Recent Changes
+- **January 12, 2026**:
+  - Reverted from Echoes design system integration back to custom design system
+  - Updated dark mode enforcement in globals.css and styles.css
+  - Fixed CSS import order (custom CSS before Tailwind)
+  - Documented all design tokens and color values
+
+- **Previous work**:
+  - Implemented PR detail pages with Context and Files tabs
+  - Added inline comment styling
+  - Created collapsible sections for Description and Discussion
+  - Built code diff viewer with syntax highlighting
+
+---
+
+**Last Updated**: January 12, 2026
+**Created by**: Claude Code Session
