@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
-    font-size: 14px;
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-87); /* 14px */
     line-height: 1.5;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -73,7 +73,7 @@ body {
 .nav-link {
     color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     padding: 8px 0;
     transition: color var(--transition-base);
     display: flex;
@@ -101,8 +101,7 @@ body {
     border: none;
     padding: 6px 12px;
     border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -201,16 +200,15 @@ body {
 }
 
 .project-name {
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
     color: var(--color-text-primary);
-    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .project-label {
-    font-size: 11px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
     color: var(--color-text-muted);
 }
 
@@ -225,7 +223,7 @@ body {
     padding: 8px 12px;
     color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     transition: background-color var(--transition-base);
     position: relative;
 }
@@ -238,7 +236,7 @@ body {
 .sidebar-link-active {
     background-color: var(--color-nav-active-bg);
     color: var(--color-text-primary);
-    font-weight: 500;
+    font-weight: var(--echoes-font-weight-medium);
 }
 
 .sidebar-link svg:first-child {
@@ -251,20 +249,18 @@ body {
 }
 
 .sidebar-section {
-    font-size: 11px;
+    font: var(--echoes-typography-label-small); /* 12px, 600 weight */
     color: var(--color-text-muted);
     text-transform: uppercase;
-    font-weight: 600;
     padding: 12px 12px 8px 12px;
     letter-spacing: 0.5px;
 }
 
 .badge-new,
 .badge-beta {
-    font-size: 10px;
+    font: var(--echoes-typography-label-small); /* 12px, 600 weight */
     padding: 2px 6px;
     border-radius: 3px;
-    font-weight: 600;
     margin-left: auto;
 }
 
@@ -282,7 +278,7 @@ body {
     margin-left: auto;
     background-color: var(--color-count-badge-bg);
     color: var(--color-text-secondary);
-    font-size: 11px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
     padding: 2px 6px;
     border-radius: 10px;
     min-width: 20px;
@@ -314,7 +310,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
 }
 
 .breadcrumb-link {
@@ -344,14 +340,15 @@ body {
 
 /* Centralized H1 styling for consistent typography */
 .page-header h1 {
-    font-size: 24px;
-    font-weight: 400;
+    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
     color: var(--color-text-primary);
     margin-bottom: 8px;
 }
 
 .page-title {
-    /* Font size, weight, color, and margin inherited from .page-header h1 */
+    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
 }
 
 /* Metadata line - appears below title */
@@ -359,7 +356,7 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     color: var(--color-text-muted);
     flex-wrap: wrap;
     margin-top: 8px;
@@ -386,7 +383,7 @@ body {
     color: var(--color-warning);
     padding: 6px 12px;
     border-radius: 4px;
-    font-size: 12px;
+    font: var(--echoes-typography-text-small-medium); /* 12px, 500 weight */
     width: fit-content;
 }
 
@@ -398,8 +395,7 @@ body {
 }
 
 .pr-count {
-    font-size: 14px;
-    font-weight: 600;
+    font: var(--echoes-typography-text-default-semibold); /* 14px, 600 weight */
     color: var(--color-text-primary);
     white-space: nowrap;
 }
@@ -425,7 +421,7 @@ body {
     color: var(--color-input-text);
     padding: 8px 12px 8px 36px;
     border-radius: 4px;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     transition: border-color var(--transition-base);
 }
 
@@ -444,7 +440,7 @@ body {
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     cursor: pointer;
     transition: background-color var(--transition-base);
     white-space: nowrap;
@@ -484,7 +480,7 @@ body {
 
 .pr-title {
     color: var(--color-text-primary);
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -495,7 +491,7 @@ body {
     align-items: center;
     gap: 6px;
     color: var(--color-success-text);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     white-space: nowrap;
 }
 
@@ -508,14 +504,13 @@ body {
 
 .pr-date {
     color: var(--color-text-muted);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     white-space: nowrap;
 }
 
 .pr-commit {
     color: var(--color-text-muted);
-    font-size: 13px;
-    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    font: var(--echoes-typography-code-default); /* Ubuntu Mono, 14px */
     white-space: nowrap;
 }
 
@@ -584,7 +579,7 @@ body {
     border: none;
     color: var(--color-text-secondary);
     padding: 12px 20px;
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
     cursor: pointer;
     position: relative;
     transition: color var(--transition-base);
@@ -606,8 +601,7 @@ body {
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
     cursor: pointer;
     transition: background-color var(--transition-base);
     display: flex;
@@ -622,7 +616,9 @@ body {
 /* Removed - now using .page-header-title-section within .page-header */
 
 .pr-detail-title {
-    /* Font size, weight, color, and margin inherited from .page-header h1 */
+    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -630,7 +626,7 @@ body {
 
 .pr-version {
     color: var(--color-text-muted);
-    font-size: 20px;
+    font: var(--echoes-typography-heading-large); /* 20px, 600 weight */
 }
 
 .pr-section {
@@ -645,8 +641,7 @@ body {
     border: none;
     color: var(--color-text-primary);
     padding: 12px 0;
-    font-size: 16px;
-    font-weight: 500;
+    font: var(--echoes-typography-heading-default); /* 16px, 600 weight */
     cursor: pointer;
     width: 100%;
     text-align: left;
@@ -658,7 +653,7 @@ body {
 }
 
 .pr-section-title {
-    font-size: 18px;
+    font: var(--echoes-typography-heading-large); /* 20px, 600 weight */
 }
 
 .chevron-icon {
@@ -684,13 +679,13 @@ body {
     border-radius: 6px;
     padding: 16px;
     color: var(--color-text-secondary);
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     line-height: 1.6;
 }
 
 .placeholder-text {
     color: var(--color-text-muted);
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     text-align: center;
     padding: 32px;
 }
@@ -742,8 +737,7 @@ body {
 
 .comment-author {
     color: var(--color-text-primary);
-    font-size: 14px;
-    font-weight: 500;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -752,15 +746,14 @@ body {
 .bot-badge {
     background-color: var(--color-badge-private-bg);
     color: var(--color-badge-private);
-    font-size: 11px;
+    font: var(--echoes-typography-text-small-semibold); /* 12px, 600 weight */
     padding: 2px 6px;
     border-radius: 3px;
-    font-weight: 600;
 }
 
 .comment-timestamp {
     color: var(--color-text-muted);
-    font-size: 12px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
 }
 
 .comment-menu {
@@ -785,7 +778,7 @@ body {
 
 .comment-text {
     color: var(--color-text-secondary);
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     line-height: 1.6;
     margin: 0;
 }
@@ -816,13 +809,12 @@ body {
 
 .quality-gate-title {
     color: var(--color-text-primary);
-    font-size: 14px;
-    font-weight: 500;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
 }
 
 .quality-gate-subtitle {
     color: var(--color-text-secondary);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     margin: 0 0 16px 0;
 }
 
@@ -839,8 +831,7 @@ body {
 
 .quality-gate-text {
     color: var(--color-success);
-    font-size: 14px;
-    font-weight: 600;
+    font: var(--echoes-typography-text-default-semibold); /* 14px, 600 weight */
 }
 
 .quality-metrics {
@@ -919,8 +910,7 @@ body {
 }
 
 .files-quality-gate-title {
-    font-size: 18px;
-    font-weight: 600;
+    font: var(--echoes-typography-heading-large); /* 20px, 600 weight */
     color: var(--color-text-primary);
     margin: 0;
 }
@@ -1006,8 +996,7 @@ body {
 
 .quality-gate-badge span {
     color: var(--color-text-primary);
-    font-size: 16px;
-    font-weight: 500;
+    font: var(--echoes-typography-heading-default); /* 16px, 600 weight */
 }
 
 .quality-metrics-inline {
@@ -1034,23 +1023,22 @@ body {
 
 .metric-inline span:first-of-type {
     color: var(--color-text-primary);
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
 }
 
 .metric-number {
     color: var(--color-text-primary);
-    font-size: 24px;
-    font-weight: 600;
+    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
 }
 
 .metric-required {
     color: var(--color-text-muted);
-    font-size: 12px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
 }
 
 .metric-subtext {
     color: var(--color-text-muted);
-    font-size: 12px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
 }
 
 .file-change-card {
@@ -1073,25 +1061,23 @@ body {
 
 .file-change-title h3 {
     color: var(--color-text-primary);
-    font-size: 16px;
-    font-weight: 500;
+    font: var(--echoes-typography-heading-default); /* 16px, 600 weight */
     margin: 0;
 }
 
 .needs-review-badge {
     background-color: var(--color-badge-private-bg);
     color: var(--color-text-muted);
-    font-size: 11px;
+    font: var(--echoes-typography-text-small-medium); /* 12px, 500 weight */
     padding: 3px 8px;
     border-radius: 3px;
-    font-weight: 500;
 }
 
 .file-change-meta {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
 }
 
 .file-count {
@@ -1175,7 +1161,7 @@ body {
 }
 
 .code-file-path {
-    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-family: var(--echoes-font-family-code);
 }
 
 .copy-button {
@@ -1235,8 +1221,7 @@ body {
 .code-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-    font-size: 13px;
+    font: var(--echoes-typography-code-default); /* Ubuntu Mono, 14px */
 }
 
 .code-line {

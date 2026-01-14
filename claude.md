@@ -6,6 +6,7 @@ This is a prototype application replicating the SonarQube Cloud interface. The d
 ## Tech Stack
 - **Framework**: Next.js 16.1.1 (React 19.2.3)
 - **Styling**: Custom CSS with design system + Tailwind CSS v4
+- **Typography**: Echoes Design System (Inter + Ubuntu Mono fonts)
 - **TypeScript**: v5
 
 ## Project Structure
@@ -19,13 +20,15 @@ code-review-v1/
 │   │   └── [id]/
 │   │       └── page.tsx            # PR detail page (dynamic route)
 │   ├── design-system.css           # Color palette and design tokens
+│   ├── design-system-typography.css # Typography tokens (Echoes system)
 │   ├── styles.css                  # Component-specific styles
 │   ├── globals.css                 # Global styles and imports
-│   ├── layout.tsx                  # Root layout
+│   ├── layout.tsx                  # Root layout with font configuration
 │   ├── page.tsx                    # Home page (renders PullRequestsPage)
-│   └── favicon.ico
+│   └── favico.png                  # Favicon
 ├── public/
-│   └── Sonar Qube Cloud.svg        # SonarQube Cloud logo
+│   ├── Sonar Qube Cloud.svg        # SonarQube Cloud logo
+│   └── favico.png                  # Favicon (public copy)
 ├── package.json
 └── README.md
 ```
@@ -91,6 +94,34 @@ The design system uses a **custom color palette** inspired by SonarQube Cloud, d
 - `--color-border-secondary`: #3a3f45
 - `--color-border-subtle`: #2e3238
 - `--color-border-focus`: #4b9fd8
+
+#### Typography System (Echoes Design System)
+
+The application uses the **Echoes React Design System** typography tokens, defined in `app/design-system-typography.css`.
+
+**Font Families**:
+- `--echoes-font-family-sans`: Inter (primary UI font)
+- `--echoes-font-family-code`: Ubuntu Mono (code and monospace content)
+
+**Font Sizes**: 12px, 14px, 16px, 20px, 24px, 34px (rem-based)
+
+**Font Weights**: 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+
+**Pre-composed Typography Tokens**:
+- `--echoes-typography-heading-xlarge`: 24px, 600 weight (H1 headings)
+- `--echoes-typography-heading-large`: 20px, 600 weight (Quality Gate title)
+- `--echoes-typography-heading-default`: 16px, 600 weight (Section headers)
+- `--echoes-typography-heading-small`: 14px, 600 weight
+- `--echoes-typography-text-default-regular`: 14px, 400 weight (Body text)
+- `--echoes-typography-text-default-medium`: 14px, 500 weight
+- `--echoes-typography-text-default-semibold`: 14px, 600 weight
+- `--echoes-typography-text-small-regular`: 12px, 400 weight (Small text)
+- `--echoes-typography-text-small-medium`: 12px, 500 weight
+- `--echoes-typography-code-default`: Ubuntu Mono, 14px (Code blocks)
+- `--echoes-typography-label-default`: 14px, 600 weight
+- `--echoes-typography-label-small`: 12px, 600 weight
+
+**Usage**: Apply via `font: var(--echoes-typography-heading-xlarge)` or use utility classes like `.typography-heading-xlarge`
 
 #### Additional Design Tokens
 **Spacing**: `--spacing-xs` (4px), `--spacing-sm` (8px), `--spacing-md` (16px), `--spacing-lg` (24px), `--spacing-xl` (32px), `--spacing-2xl` (48px)
@@ -223,19 +254,25 @@ Location: `app/components/PullRequestsPage.tsx`
 ## Styling Architecture
 
 ### CSS Organization
-The CSS is organized in three layers, loaded in this specific order:
+The CSS is organized in four layers, loaded in this specific order:
 
 1. **design-system.css**: Core design tokens (colors, spacing, shadows, etc.)
    - Custom SonarQube Cloud-inspired color palette
    - Contains all CSS custom properties used throughout the app
 
-2. **styles.css**: Component-specific styles and layout
+2. **design-system-typography.css**: Typography design tokens (Echoes system)
+   - Font families (Inter, Ubuntu Mono)
+   - Font sizes, weights, and line heights
+   - Pre-composed typography tokens for consistent text styling
+
+3. **styles.css**: Component-specific styles and layout
+   - Uses typography tokens from design-system-typography.css
    - Cards use `background-color: transparent` with borders (stroke-only design)
    - Body has `overflow-y: scroll` to prevent layout shift
    - Dark mode enforced with `!important` flags
 
-3. **globals.css**: Global imports and Tailwind configuration
-   - Imports design-system.css and styles.css BEFORE Tailwind
+4. **globals.css**: Global imports and Tailwind configuration
+   - Imports design-system.css, design-system-typography.css, and styles.css BEFORE Tailwind
    - Forces dark mode by default with explicit color values
    - Import order is critical: custom CSS must load before Tailwind to prevent overrides
 
@@ -300,7 +337,8 @@ The application is **dark mode by default** with no light mode option:
 - Navigation between pages is functional (PR list → PR detail)
 - Tab switching works (Context ↔ Files)
 - Collapsible sections functional (Description, Discussion)
-- Fonts use system defaults (customizable)
+- **Typography**: Uses Echoes Design System with Inter (UI) and Ubuntu Mono (code) fonts
+- **Font Loading**: Fonts loaded via Next.js font optimization (next/font/google)
 
 ## Resources
 - Design reference: SonarQube Cloud interface screenshots
@@ -312,6 +350,21 @@ The application is **dark mode by default** with no light mode option:
 ## Development History
 
 ### Recent Changes
+- **January 15, 2026**:
+  - **Echoes Typography System Integration**: Implemented full Echoes React Design System typography
+    - Installed Inter (sans-serif) and Ubuntu Mono (monospace) fonts via next/font/google
+    - Created design-system-typography.css with all Echoes typography tokens
+    - Updated layout.tsx to load and configure fonts
+    - Updated all typography in styles.css to use Echoes tokens
+    - Font loading optimized with Next.js font optimization (swap display strategy)
+    - Pre-composed typography tokens for consistent text styling across the app
+    - Typography mapping:
+      - H1 headings: 24px, 600 weight (upgraded from 400)
+      - Quality Gate title: 20px, 600 weight (upgraded from 18px)
+      - Body text: Inter, 14px with proper line heights
+      - Code blocks: Ubuntu Mono, 14px
+      - All UI elements now use professional Echoes tokens
+
 - **January 14, 2026**:
   - **Unified Page Header**: Created consistent header structure across all pages
     - Combined breadcrumb and title into single `.page-header` component
@@ -345,5 +398,5 @@ The application is **dark mode by default** with no light mode option:
 
 ---
 
-**Last Updated**: January 14, 2026
+**Last Updated**: January 15, 2026
 **Created by**: Claude Code Session
