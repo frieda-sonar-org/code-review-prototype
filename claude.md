@@ -121,8 +121,10 @@ All colors are accessible via CSS custom properties:
 - ✅ Top navigation bar with SonarQube Cloud logo and navigation links (My Projects, My Issues, My Portfolios, Explore)
 - ✅ Left sidebar with project selector and navigation menu
 - ✅ Pull Requests link is marked as active in sidebar
-- ✅ Breadcrumb navigation
-- ✅ Page header with warning badge
+- ✅ **Unified Page Header** (sidebar background color with bottom border):
+  - Breadcrumb navigation
+  - H1 title: "Pull Requests" (24px, centralized styling)
+  - Warning badge on second line: "Last analysis had warnings"
 - ✅ Search bar and filters
 - ✅ Pull requests list (10 dummy items) - clickable, links to detail pages
 - ✅ Status indicators with green checkmarks
@@ -135,9 +137,12 @@ All colors are accessible via CSS custom properties:
 
 **Features**:
 - ✅ Same top navigation and sidebar as homepage
-- ✅ Breadcrumb with PR number
-- ✅ PR title with version hashtag
-- ✅ "Review changes" button (top right, same line as title)
+- ✅ **Unified Page Header** (sidebar background color with bottom border, min-height: 120px):
+  - Breadcrumb navigation with PR number
+  - H1 title with version hashtag (24px, centralized styling)
+  - Metadata line with: Private, New Lines count, Last analysis time, Commit hash, Branch path, Warning badge
+  - "Review changes" button (aligned to right)
+  - Review dropdown modal (Comment, Request changes, Approve options)
 - ✅ Tab navigation: Context and Files
 - ✅ **Context Tab**:
   - Collapsible Description section with PR details
@@ -145,17 +150,20 @@ All colors are accessible via CSS custom properties:
     - SonarQube bot comment with Quality Gate card
     - User comments
 - ✅ **Files Tab**:
-  - Left sidebar: Groups panel (0/1 groups)
-  - Quality Gate summary with metrics (Passed status)
-  - File change cards with:
-    - Title, "Needs review" badge
-    - File count, additions/deletions stats
-    - Description and review focus
-    - Code diff viewer with syntax highlighting (YAML)
+  - Quality Gate summary (full-width at top): Passed status with metrics
+  - Two-column layout below:
+    - Left sidebar: Groups panel (0/1 groups)
+    - Right content: File change cards with:
+      - Title, "Needs review" badge
+      - File count, additions/deletions stats
+      - Description and review focus
+      - Code diff viewer with syntax highlighting (YAML)
 
 **Design Notes**:
 - All card components use transparent backgrounds with borders (stroke-only design)
 - Scrollbar always visible to prevent layout shift
+- Page headers have consistent height across all pages (min-height: 120px)
+- H1 typography centralized via `.page-header h1` selector (24px across all pages)
 
 ## Running the Project
 
@@ -275,8 +283,17 @@ The application is **dark mode by default** with no light mode option:
 
 ### Layout
 - Scrollbar always visible (`overflow-y: scroll` on body) to prevent layout shift
-- PR title positioned above tabs with Review button on the same line
-- Flexible layout that adapts to content
+- **Unified Page Header** across all pages:
+  - Sidebar background color (#2B2F3F) with bottom border
+  - Consistent minimum height (120px)
+  - Contains breadcrumb + title + metadata/badges
+- **Files Tab** restructured layout:
+  - Quality Gate section moved to full-width top position
+  - Two-column layout below: Groups (left, 240px) + File changes (right, 1fr)
+- **Review Modal** styling:
+  - Compact textarea (100px min-height)
+  - Reduced padding on review options
+  - Primary CTA color for submit button (#d4a5ff)
 
 ## Notes
 - All content is currently dummy data
@@ -295,6 +312,25 @@ The application is **dark mode by default** with no light mode option:
 ## Development History
 
 ### Recent Changes
+- **January 14, 2026**:
+  - **Unified Page Header**: Created consistent header structure across all pages
+    - Combined breadcrumb and title into single `.page-header` component
+    - Applied sidebar background color (#2B2F3F) with bottom border
+    - Set consistent min-height (120px) for uniform appearance
+  - **Centralized H1 Typography**: Standardized all H1 elements to 24px via `.page-header h1`
+  - **PR Metadata Line**: Added essential information below PR title
+    - Private/Public indicator, New Lines count, Last analysis time
+    - Commit hash with icon, Branch path with icon
+    - Warning badge with fit-content background
+  - **Files Tab Restructure**: Reorganized layout for better information hierarchy
+    - Moved Quality Gate to full-width position at top
+    - Two-column grid below: Groups sidebar (240px) + File changes (1fr)
+  - **Review Modal Updates**: Improved UX with compact design
+    - Reduced textarea height (200px → 100px)
+    - Tightened padding on review options (12px → 6px)
+    - Changed submit button to primary accent color
+    - Removed icon from submit button
+
 - **January 12, 2026**:
   - Reverted from Echoes design system integration back to custom design system
   - Updated dark mode enforcement in globals.css and styles.css
@@ -309,5 +345,5 @@ The application is **dark mode by default** with no light mode option:
 
 ---
 
-**Last Updated**: January 12, 2026
+**Last Updated**: January 14, 2026
 **Created by**: Claude Code Session

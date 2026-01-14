@@ -679,7 +679,7 @@ body {
 }
 
 .pr-description {
-    background-color: transparent;
+    background-color: var(--color-sidebar-bg);
     border: 1px solid var(--color-border-secondary);
     border-radius: 6px;
     padding: 16px;
@@ -697,7 +697,7 @@ body {
 
 /* Comment Cards */
 .comment-card {
-    background-color: transparent;
+    background-color: var(--color-sidebar-bg);
     border: 1px solid var(--color-border-secondary);
     border-radius: 6px;
     padding: 16px;
@@ -904,11 +904,25 @@ body {
 
 /* Quality Gate - Full Width */
 .files-quality-gate {
-    background-color: transparent;
+    background-color: var(--color-sidebar-bg);
     border: 1px solid var(--color-border-secondary);
     border-radius: 6px;
     padding: 16px;
     width: 100%;
+}
+
+.quality-gate-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.files-quality-gate-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
 }
 
 /* Files View - Two Column Layout (Groups + Content) */
@@ -919,7 +933,7 @@ body {
 }
 
 .files-groups {
-    background-color: transparent;
+    background-color: var(--color-sidebar-bg);
     border: 1px solid var(--color-border-secondary);
     border-radius: 6px;
     padding: 16px;
@@ -988,7 +1002,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
 }
 
 .quality-gate-badge span {
@@ -999,7 +1012,7 @@ body {
 
 .quality-metrics-inline {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
 }
 
@@ -1007,6 +1020,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+.metric-inline-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .metric-inline svg {
@@ -1029,8 +1048,13 @@ body {
     font-size: 12px;
 }
 
+.metric-subtext {
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
 .file-change-card {
-    background-color: transparent;
+    background-color: var(--color-sidebar-bg);
     border: 1px solid var(--color-border-secondary);
     border-radius: 6px;
     padding: 16px;

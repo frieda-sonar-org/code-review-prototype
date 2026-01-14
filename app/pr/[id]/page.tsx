@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 
 export default function PRDetailPage() {
+  useEffect(() => {
+    document.title = 'Review - SonarQube Cloud';
+  }, []);
   const params = useParams();
   const [showDescription, setShowDescription] = useState(true);
   const [showDiscussion, setShowDiscussion] = useState(true);
@@ -581,13 +584,23 @@ export default function PRDetailPage() {
             <div className="files-tab-container">
               {/* Quality Gate Summary - Full Width at Top */}
               <div className="files-quality-gate">
-                <div className="quality-gate-badge">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M4 10l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
-                  </svg>
-                  <span>Passed</span>
+                <div className="quality-gate-header-row">
+                  <h3 className="files-quality-gate-title">Quality Gate:</h3>
+                  <div className="quality-gate-badge">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M4 10l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
+                    </svg>
+                    <span>Passed</span>
+                  </div>
                 </div>
                 <div className="quality-metrics-inline">
+                  <div className="metric-inline">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <circle cx="8" cy="8" r="6" stroke="#4caf50" strokeWidth="1.5" fill="none"/>
+                    </svg>
+                    <span>Reliability Rating</span>
+                    <span className="metric-required">Rating required B</span>
+                  </div>
                   <div className="metric-inline">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                       <circle cx="8" cy="8" r="6" stroke="#4caf50" strokeWidth="1.5" fill="none"/>
