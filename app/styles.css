@@ -859,12 +859,28 @@ body {
     text-decoration: underline;
 }
 
-/* Files View */
+/* Files Tab Container */
+.files-tab-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+/* Quality Gate - Full Width */
+.files-quality-gate {
+    background-color: transparent;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 6px;
+    padding: 16px;
+    width: 100%;
+}
+
+/* Files View - Two Column Layout (Groups + Content) */
 .files-view {
     display: grid;
     grid-template-columns: 240px 1fr;
     gap: 24px;
-    margin-top: 24px;
 }
 
 .files-groups {
@@ -931,13 +947,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
-
-.files-quality-gate {
-    background-color: transparent;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 6px;
-    padding: 16px;
 }
 
 .quality-gate-badge {
@@ -1331,7 +1340,7 @@ body {
 
 .review-textarea {
     width: 100%;
-    min-height: 200px;
+    min-height: 100px;
     background-color: #1e2327;
     border: 2px solid #4a5568;
     border-radius: 6px;
@@ -1364,7 +1373,7 @@ body {
     align-items: flex-start;
     gap: 12px;
     cursor: pointer;
-    padding: 12px;
+    padding: 6px;
     border-radius: 6px;
     transition: background-color var(--transition-base);
 }
@@ -1442,13 +1451,14 @@ body {
 }
 
 .btn-review-submit {
-    background-color: #2d3748;
+    background-color: var(--color-accent-primary);
     border: none;
     color: var(--color-text-primary);
     padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1456,7 +1466,7 @@ body {
 }
 
 .btn-review-submit:hover {
-    background-color: #3a4556;
+    background-color: var(--color-accent-primary-hover);
 }
 
 /* Responsive */

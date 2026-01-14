@@ -368,12 +368,7 @@ export default function PRDetailPage() {
                   <div className="review-modal-footer">
                     <div className="review-modal-actions">
                       <button className="btn-review-submit">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                          <rect x="2" y="2" width="4" height="4" rx="1"/>
-                          <rect x="7" y="2" width="4" height="4" rx="1"/>
-                          <rect x="12" y="2" width="2" height="4" rx="1"/>
-                        </svg>
-                        <span>Submit review</span>
+                        Submit review
                       </button>
                     </div>
                   </div>
@@ -549,10 +544,43 @@ export default function PRDetailPage() {
           )}
 
           {activeTab === 'files' && (
-            <div className="files-view">
-              {/* Left sidebar - Groups */}
-              <div className="files-groups">
-                <div className="files-groups-header">
+            <div className="files-tab-container">
+              {/* Quality Gate Summary - Full Width at Top */}
+              <div className="files-quality-gate">
+                <div className="quality-gate-badge">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M4 10l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
+                  </svg>
+                  <span>Passed</span>
+                </div>
+                <div className="quality-metrics-inline">
+                  <div className="metric-inline">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <circle cx="8" cy="8" r="6" stroke="#4caf50" strokeWidth="1.5" fill="none"/>
+                    </svg>
+                    <span>0.0% Duplicated Lines (%)</span>
+                    <span className="metric-required">≤ 3.0% required</span>
+                  </div>
+                  <div className="metric-inline">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    </svg>
+                    <span>100% Security Hotspots Reviewed</span>
+                    <span className="metric-required">≥ 100% required</span>
+                  </div>
+                  <div className="metric-inline">
+                    <span className="metric-number">0</span>
+                    <span>Issues</span>
+                    <span className="metric-required">≤ 0 required</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Two Column Layout: Groups on left, File changes on right */}
+              <div className="files-view">
+                {/* Left sidebar - Groups */}
+                <div className="files-groups">
+                  <div className="files-groups-header">
                   <span>Groups</span>
                   <span className="groups-count">0 / 1</span>
                 </div>
@@ -631,37 +659,6 @@ export default function PRDetailPage() {
 
               {/* Right content - File changes */}
               <div className="files-content">
-                {/* Quality Gate Summary */}
-                <div className="files-quality-gate">
-                  <div className="quality-gate-badge">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M4 10l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
-                    </svg>
-                    <span>Passed</span>
-                  </div>
-                  <div className="quality-metrics-inline">
-                    <div className="metric-inline">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <circle cx="8" cy="8" r="6" stroke="#4caf50" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                      <span>0.0% Duplicated Lines (%)</span>
-                      <span className="metric-required">≤ 3.0% required</span>
-                    </div>
-                    <div className="metric-inline">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                      <span>100% Security Hotspots Reviewed</span>
-                      <span className="metric-required">≥ 100% required</span>
-                    </div>
-                    <div className="metric-inline">
-                      <span className="metric-number">0</span>
-                      <span>Issues</span>
-                      <span className="metric-required">≤ 0 required</span>
-                    </div>
-                  </div>
-                </div>
-
                 {/* File Change Card */}
                 <div className="file-change-card">
                   <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -1011,6 +1008,7 @@ export default function PRDetailPage() {
                   )}
                 </div>
               </div>
+            </div>
             </div>
           )}
         </main>
