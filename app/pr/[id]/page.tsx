@@ -798,7 +798,7 @@ export default function PRDetailPage() {
                             <td className="line-sign">+</td>
                             <td className="line-content"></td>
                           </tr>
-                          <tr className="code-line added">
+                          <tr className="code-line added has-comment">
                             <td className="line-number">4</td>
                             <td className="line-sign">+</td>
                             <td className="line-content">

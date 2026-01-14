@@ -340,13 +340,19 @@ body {
 
 /* Centralized H1 styling for consistent typography */
 .page-header h1 {
-    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-150); /* 24px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-200);
     color: var(--color-text-primary);
     margin-bottom: 8px;
 }
 
 .page-title {
-    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-150); /* 24px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-200);
     color: var(--color-text-primary);
     margin-bottom: 8px;
 }
@@ -510,7 +516,10 @@ body {
 
 .pr-commit {
     color: var(--color-text-muted);
-    font: var(--echoes-typography-code-default); /* Ubuntu Mono, 14px */
+    font-family: var(--echoes-font-family-code);
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
+    line-height: var(--echoes-line-height-125);
     white-space: nowrap;
 }
 
@@ -616,7 +625,10 @@ body {
 /* Removed - now using .page-header-title-section within .page-header */
 
 .pr-detail-title {
-    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-150); /* 24px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-200);
     color: var(--color-text-primary);
     margin-bottom: 8px;
     display: flex;
@@ -626,7 +638,10 @@ body {
 
 .pr-version {
     color: var(--color-text-muted);
-    font: var(--echoes-typography-heading-large); /* 20px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-125); /* 20px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-175);
 }
 
 .pr-section {
@@ -641,7 +656,10 @@ body {
     border: none;
     color: var(--color-text-primary);
     padding: 12px 0;
-    font: var(--echoes-typography-heading-default); /* 16px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-100); /* 16px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-150);
     cursor: pointer;
     width: 100%;
     text-align: left;
@@ -653,7 +671,10 @@ body {
 }
 
 .pr-section-title {
-    font: var(--echoes-typography-heading-large); /* 20px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-125); /* 20px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-175);
 }
 
 .chevron-icon {
@@ -849,8 +870,7 @@ body {
 
 .metric-header {
     color: var(--color-text-primary);
-    font-size: 13px;
-    font-weight: 600;
+    font: var(--echoes-typography-text-default-semibold); /* 14px, 600 weight */
     margin: 0 0 8px 0;
 }
 
@@ -862,7 +882,7 @@ body {
 
 .metric-link {
     color: var(--color-accent-secondary);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     text-decoration: none;
     transition: color var(--transition-base);
 }
@@ -910,7 +930,10 @@ body {
 }
 
 .files-quality-gate-title {
-    font: var(--echoes-typography-heading-large); /* 20px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-125); /* 20px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-175);
     color: var(--color-text-primary);
     margin: 0;
 }
@@ -936,13 +959,12 @@ body {
     align-items: center;
     margin-bottom: 16px;
     color: var(--color-text-primary);
-    font-size: 14px;
-    font-weight: 500;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
 }
 
 .groups-count {
     color: var(--color-text-muted);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
 }
 
 .file-group {
@@ -974,7 +996,7 @@ body {
 .file-group-name {
     flex: 1;
     color: var(--color-text-secondary);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
 }
 
 .chevron-right {
@@ -996,7 +1018,10 @@ body {
 
 .quality-gate-badge span {
     color: var(--color-text-primary);
-    font: var(--echoes-typography-heading-default); /* 16px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-100); /* 16px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-150);
 }
 
 .quality-metrics-inline {
@@ -1028,7 +1053,10 @@ body {
 
 .metric-number {
     color: var(--color-text-primary);
-    font: var(--echoes-typography-heading-xlarge); /* 24px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-150); /* 24px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-200);
 }
 
 .metric-required {
@@ -1061,7 +1089,10 @@ body {
 
 .file-change-title h3 {
     color: var(--color-text-primary);
-    font: var(--echoes-typography-heading-default); /* 16px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-100); /* 16px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-150);
     margin: 0;
 }
 
@@ -1113,7 +1144,7 @@ body {
 
 .file-change-description {
     color: var(--color-text-secondary);
-    font-size: 14px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     line-height: 1.6;
     margin-bottom: 16px;
 }
@@ -1140,7 +1171,7 @@ body {
 }
 
 .code-diff-header {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-sidebar-bg); /* Same as left navigation */
     border-bottom: 1px solid var(--color-border-secondary);
     padding: 12px 16px;
     display: flex;
@@ -1157,11 +1188,14 @@ body {
     color: var(--color-text-primary);
     cursor: pointer;
     padding: 0;
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
 }
 
 .code-file-path {
     font-family: var(--echoes-font-family-code);
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
+    line-height: var(--echoes-line-height-125);
 }
 
 .copy-button {
@@ -1221,7 +1255,10 @@ body {
 .code-table {
     width: 100%;
     border-collapse: collapse;
-    font: var(--echoes-typography-code-default); /* Ubuntu Mono, 14px */
+    font-family: var(--echoes-font-family-code); /* Ubuntu Mono */
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
+    line-height: var(--echoes-line-height-125);
 }
 
 .code-line {
@@ -1240,6 +1277,11 @@ body {
     background-color: var(--color-code-line-removed);
 }
 
+/* Code lines with inline comments keep their original background (green for added lines) */
+.code-line.has-comment {
+    /* No special styling - inherits from .code-line.added */
+}
+
 .line-number {
     color: var(--color-code-line-number);
     text-align: right;
@@ -1247,6 +1289,7 @@ body {
     user-select: none;
     width: 50px;
     border-right: 1px solid var(--color-border-secondary);
+    font-family: var(--echoes-font-family-code) !important;
 }
 
 .line-sign {
@@ -1255,6 +1298,7 @@ body {
     width: 30px;
     text-align: center;
     user-select: none;
+    font-family: var(--echoes-font-family-code) !important;
 }
 
 .code-line.added .line-sign {
@@ -1269,14 +1313,17 @@ body {
     color: var(--color-text-secondary);
     padding: 2px 12px;
     white-space: pre;
+    font-family: var(--echoes-font-family-code) !important; /* Ubuntu Mono */
 }
 
 .code-keyword {
     color: #c792ea;
+    font-family: inherit;
 }
 
 .code-string {
     color: #c3e88d;
+    font-family: inherit;
 }
 
 .code-indent {
@@ -1285,16 +1332,16 @@ body {
 
 /* Inline Code Comment */
 .inline-comment-row {
-    background-color: transparent;
+    background-color: var(--color-code-line-added); /* Green background to match the code line above */
 }
 
 .inline-comment-container {
     padding: 16px;
-    background-color: transparent;
+    background-color: var(--color-sidebar-bg); /* Same as left navigation */
     border: 1px solid var(--color-border-primary);
     border-radius: var(--radius-md);
     margin: 8px 12px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--echoes-font-family-sans);
 }
 
 .inline-comment {
@@ -1306,12 +1353,13 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: var(--color-accent-secondary);
+    background-color: var(--color-accent-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-weight: 600;
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
     color: var(--color-text-primary);
     flex-shrink: 0;
 }
@@ -1328,19 +1376,18 @@ body {
 }
 
 .inline-comment-author {
-    font-weight: 600;
+    font: var(--echoes-typography-text-default-semibold); /* 14px, 600 weight */
     color: var(--color-text-primary);
-    font-size: 13px;
 }
 
 .inline-comment-date {
     color: var(--color-text-muted);
-    font-size: 12px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
 }
 
 .inline-comment-text {
     color: var(--color-text-secondary);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     line-height: 1.5;
     margin: 0;
 }
@@ -1355,7 +1402,7 @@ body {
     background: none;
     border: none;
     color: var(--color-link);
-    font-size: 12px;
+    font: var(--echoes-typography-text-small-regular); /* 12px */
     cursor: pointer;
     padding: 0;
     transition: color var(--transition-base);
@@ -1390,8 +1437,7 @@ body {
     border-radius: 6px;
     color: var(--color-text-primary);
     padding: 12px;
-    font-size: 14px;
-    font-family: inherit;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     resize: vertical;
     transition: border-color var(--transition-base);
 }
@@ -1464,9 +1510,8 @@ body {
 }
 
 .review-option-title {
-    font-weight: 600;
+    font: var(--echoes-typography-text-default-semibold); /* 14px, 600 weight */
     color: var(--color-text-primary);
-    font-size: 14px;
 }
 
 .review-option-icon {
@@ -1475,7 +1520,7 @@ body {
 
 .review-option-description {
     color: var(--color-text-muted);
-    font-size: 13px;
+    font: var(--echoes-typography-text-default-regular); /* 14px */
     line-height: 1.5;
 }
 
@@ -1501,8 +1546,7 @@ body {
     padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
     display: flex;
     align-items: center;
     gap: 8px;

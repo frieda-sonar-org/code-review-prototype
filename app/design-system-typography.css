@@ -10,7 +10,7 @@
 :root {
   /* Font Families */
   --echoes-font-family-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --echoes-font-family-code: var(--font-ubuntu-mono), "Courier New", monospace;
+  --echoes-font-family-code: var(--font-ubuntu-mono), "Monaco", "Menlo", "Consolas", "Courier New", monospace;
 
   /* Font Sizes (rem values) */
   --echoes-font-size-75: 0.75rem;    /* 12px */

@@ -14,6 +14,7 @@ const ubuntuMono = Ubuntu_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
+  fallback: ["Monaco", "Menlo", "Consolas", "monospace"],
 });
 
 export const metadata: Metadata = {
