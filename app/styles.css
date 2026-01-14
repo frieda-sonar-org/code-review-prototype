@@ -298,11 +298,22 @@ body {
     position: relative;
 }
 
+/* Page Header - Unified breadcrumb and title section */
+.page-header {
+    background-color: var(--color-sidebar-bg);
+    padding: 16px 24px;
+    margin: -24px -32px 24px -32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-bottom: 1px solid var(--color-border-secondary);
+    min-height: 120px;
+}
+
 .breadcrumb {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 16px;
     font-size: 13px;
 }
 
@@ -324,21 +335,51 @@ body {
     color: var(--color-text-primary);
 }
 
-.page-header {
+/* Page header title section - replaces pr-title-section */
+.page-header-title-section {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 32px;
+    justify-content: space-between;
+}
+
+/* Centralized H1 styling for consistent typography */
+.page-header h1 {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
 }
 
 .page-title {
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--color-text-primary);
+    /* Font size, weight, color, and margin inherited from .page-header h1 */
+}
+
+/* Metadata line - appears below title */
+.page-metadata {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metadata-separator {
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-text-muted);
+    border-radius: 50%;
 }
 
 .warning-badge {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     background-color: var(--color-warning-bg);
@@ -346,6 +387,7 @@ body {
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 12px;
+    width: fit-content;
 }
 
 .search-bar {
@@ -577,17 +619,10 @@ body {
     background-color: #3a8eef;
 }
 
-.pr-title-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-}
+/* Removed - now using .page-header-title-section within .page-header */
 
 .pr-detail-title {
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--color-text-primary);
+    /* Font size, weight, color, and margin inherited from .page-header h1 */
     display: flex;
     align-items: center;
     gap: 8px;

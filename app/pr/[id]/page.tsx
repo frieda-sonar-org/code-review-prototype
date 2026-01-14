@@ -282,29 +282,62 @@ export default function PRDetailPage() {
 
         {/* Main Content */}
         <main className="main-content">
-          {/* Breadcrumb */}
-          <div className="breadcrumb">
-            <a href="#" className="breadcrumb-link">SonarSource</a>
-            <span className="breadcrumb-separator">/</span>
-            <a href="#" className="breadcrumb-link">asast-scanner-pipeline</a>
-            <span className="breadcrumb-separator">/</span>
-            <a href="/" className="breadcrumb-link">Pull Requests</a>
-            <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">{prData.number} - {prData.title}</span>
-          </div>
+          {/* Page Header - unified breadcrumb and title section */}
+          <div className="page-header">
+            {/* Breadcrumb */}
+            <div className="breadcrumb">
+              <a href="#" className="breadcrumb-link">SonarSource</a>
+              <span className="breadcrumb-separator">/</span>
+              <a href="#" className="breadcrumb-link">asast-scanner-pipeline</a>
+              <span className="breadcrumb-separator">/</span>
+              <a href="/" className="breadcrumb-link">Pull Requests</a>
+              <span className="breadcrumb-separator">/</span>
+              <span className="breadcrumb-current">{prData.number} - {prData.title}</span>
+            </div>
 
-          {/* PR Title with Review Button */}
-          <div className="pr-title-section">
-            <h1 className="pr-detail-title">
-              {prData.number} - {prData.title} <span className="pr-version">#{prData.version}</span>
-            </h1>
-            <div style={{ position: 'relative' }}>
-              <button className="btn-review-changes" onClick={() => setShowReviewModal(!showReviewModal)}>
-                Review changes
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style={{ marginLeft: '6px' }}>
-                  <path d="M6 8L2 4h8L6 8z"/>
-                </svg>
-              </button>
+            {/* Title section with Review Button */}
+            <div className="page-header-title-section">
+              <div>
+                <h1 className="pr-detail-title">
+                  {prData.number} - {prData.title} <span className="pr-version">#{prData.version}</span>
+                </h1>
+                <div className="page-metadata">
+                  <span className="metadata-item">Private</span>
+                  <span className="metadata-separator"></span>
+                  <span className="metadata-item">0 New Lines</span>
+                  <span className="metadata-separator"></span>
+                  <span className="metadata-item">Last analysis 1 month ago</span>
+                  <span className="metadata-separator"></span>
+                  <span className="metadata-item">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style={{ opacity: 0.6 }}>
+                      <rect x="2" y="2" width="4" height="4" rx="1"/>
+                    </svg>
+                    d785751e
+                  </span>
+                  <span className="metadata-separator"></span>
+                  <span className="metadata-item">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style={{ opacity: 0.6 }}>
+                      <path d="M3 2l3 3-3 3V2zM6 5l3 3-3 3V5z"/>
+                    </svg>
+                    felix/fixMise2 → master
+                  </span>
+                  <span className="metadata-separator"></span>
+                  <div className="warning-badge">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M8 2l6 12H2L8 2z"/>
+                      <path d="M8 7v3M8 11h.01" stroke="currentColor" strokeWidth="1.5"/>
+                    </svg>
+                    Last analysis had warnings
+                  </div>
+                </div>
+              </div>
+              <div style={{ position: 'relative' }}>
+                <button className="btn-review-changes" onClick={() => setShowReviewModal(!showReviewModal)}>
+                  Review changes
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style={{ marginLeft: '6px' }}>
+                    <path d="M6 8L2 4h8L6 8z"/>
+                  </svg>
+                </button>
 
               {/* Review Dropdown Panel */}
               {showReviewModal && (
@@ -375,6 +408,7 @@ export default function PRDetailPage() {
                 </div>
               )}
             </div>
+          </div>
           </div>
 
           {/* Page Header with Tabs */}
@@ -499,13 +533,13 @@ export default function PRDetailPage() {
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                       <path d="M4 8l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
                                     </svg>
-                                    <a href="#" className="metric-link">{comment.content.metrics.newIssues} New issues</a>
+                                    <a href="#" className="metric-link">{comment.content.metrics?.newIssues} New issues</a>
                                   </div>
                                   <div className="metric-item">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                       <circle cx="8" cy="8" r="6" stroke="#f5a623" strokeWidth="1.5" fill="none"/>
                                     </svg>
-                                    <a href="#" className="metric-link">{comment.content.metrics.acceptedIssues} Accepted issues</a>
+                                    <a href="#" className="metric-link">{comment.content.metrics?.acceptedIssues} Accepted issues</a>
                                   </div>
                                 </div>
                                 <div className="metric-section">
@@ -514,19 +548,19 @@ export default function PRDetailPage() {
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                       <path d="M4 8l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
                                     </svg>
-                                    <a href="#" className="metric-link">{comment.content.metrics.securityHotspots} Security Hotspots</a>
+                                    <a href="#" className="metric-link">{comment.content.metrics?.securityHotspots} Security Hotspots</a>
                                   </div>
                                   <div className="metric-item">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                       <path d="M4 8l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
                                     </svg>
-                                    <a href="#" className="metric-link">{comment.content.metrics.coverageOnNew} Coverage on New Code</a>
+                                    <a href="#" className="metric-link">{comment.content.metrics?.coverageOnNew} Coverage on New Code</a>
                                   </div>
                                   <div className="metric-item">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                       <path d="M4 8l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
                                     </svg>
-                                    <a href="#" className="metric-link">{comment.content.metrics.duplicationOnNew} Duplication on New Code</a>
+                                    <a href="#" className="metric-link">{comment.content.metrics?.duplicationOnNew} Duplication on New Code</a>
                                   </div>
                                 </div>
                               </div>
