@@ -775,6 +775,14 @@ export default function PRDetailPage() {
                         <tbody>
                           <tr className="code-line added">
                             <td className="line-number">1</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-keyword">name:</span> NPM Setup
@@ -782,6 +790,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">2</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-keyword">description:</span> Action to configure NPM registry with Artifactory token from Vault
@@ -789,11 +805,27 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">3</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content"></td>
                           </tr>
                           <tr className="code-line added has-comment">
                             <td className="line-number">4</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-keyword">runs:</span>
@@ -801,6 +833,7 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="inline-comment-row">
                             <td className="line-number"></td>
+                            <td className="line-comment-toggle"></td>
                             <td colSpan={2}>
                               <div className="inline-comment-container">
                                 <div className="inline-comment">
@@ -824,6 +857,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">5</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-indent">  </span><span className="code-keyword">using:</span> <span className="code-string">"composite"</span>
@@ -831,6 +872,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">6</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-indent">  </span><span className="code-keyword">steps:</span>
@@ -838,6 +887,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">7</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Get vault secrets
@@ -884,6 +941,14 @@ export default function PRDetailPage() {
                         <tbody>
                           <tr className="code-line">
                             <td className="line-number">18</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign"></td>
                             <td className="line-content">
                               <span className="code-indent">  </span><span className="code-keyword">steps:</span>
@@ -891,6 +956,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">19</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Setup Node.js
@@ -898,6 +971,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">20</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">      </span><span className="code-keyword">uses:</span> actions/setup-node@v3
@@ -905,6 +986,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">21</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">      </span><span className="code-keyword">with:</span>
@@ -912,6 +1001,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">22</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">        </span><span className="code-keyword">node-version:</span> <span className="code-string">'18'</span>
@@ -919,6 +1016,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">23</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">        </span><span className="code-keyword">cache:</span> <span className="code-string">'npm'</span>
@@ -926,11 +1031,27 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">24</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content"></td>
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">25</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Install dependencies
@@ -938,6 +1059,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">19</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Setup NPM
@@ -945,6 +1074,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">20</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-indent">      </span><span className="code-keyword">uses:</span> ./github/actions/npm-setup
@@ -952,11 +1089,27 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line">
                             <td className="line-number">21</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign"></td>
                             <td className="line-content"></td>
                           </tr>
                           <tr className="code-line">
                             <td className="line-number">22</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign"></td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Run build
@@ -1003,6 +1156,14 @@ export default function PRDetailPage() {
                         <tbody>
                           <tr className="code-line">
                             <td className="line-number">32</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign"></td>
                             <td className="line-content">
                               <span className="code-indent">  </span><span className="code-keyword">steps:</span>
@@ -1010,6 +1171,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">33</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">uses:</span> actions/setup-node@v3
@@ -1017,6 +1186,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line removed">
                             <td className="line-number">34</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">-</td>
                             <td className="line-content">
                               <span className="code-indent">      </span><span className="code-keyword">with:</span>
@@ -1024,6 +1201,14 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line added">
                             <td className="line-number">33</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign">+</td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">uses:</span> ./github/actions/npm-setup
@@ -1031,11 +1216,27 @@ export default function PRDetailPage() {
                           </tr>
                           <tr className="code-line">
                             <td className="line-number">34</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign"></td>
                             <td className="line-content"></td>
                           </tr>
                           <tr className="code-line">
                             <td className="line-number">35</td>
+                            <td className="line-comment-toggle">
+                              <button className="add-comment-btn" aria-label="Add comment">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
+                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                </svg>
+                              </button>
+                            </td>
                             <td className="line-sign"></td>
                             <td className="line-content">
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Deploy to production
