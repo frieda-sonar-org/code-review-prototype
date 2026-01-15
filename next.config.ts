@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    turbo: {
-      useSystemTlsCerts: true,
-    },
+  output: 'export',
+  images: {
+    unoptimized: true,
   },
+  basePath: process.env.NODE_ENV === 'production' ? '/code-review-v1' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/code-review-v1' : '',
 };
 
 export default nextConfig;
