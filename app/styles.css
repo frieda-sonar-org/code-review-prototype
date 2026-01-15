@@ -1255,7 +1255,7 @@ body {
 .code-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--echoes-font-family-code); /* Ubuntu Mono */
+    /* font-family removed - applied directly to code cells instead */
     font-size: var(--echoes-font-size-87); /* 14px */
     font-weight: var(--echoes-font-weight-regular); /* 400 */
     line-height: var(--echoes-line-height-125);
@@ -1376,18 +1376,26 @@ body {
 }
 
 .inline-comment-author {
-    font: var(--echoes-typography-text-default-semibold); /* 14px, 600 weight */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-semibold); /* 600 */
+    line-height: var(--echoes-line-height-125);
     color: var(--color-text-primary);
 }
 
 .inline-comment-date {
     color: var(--color-text-muted);
-    font: var(--echoes-typography-text-small-regular); /* 12px */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-75); /* 12px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
+    line-height: var(--echoes-line-height-100);
 }
 
 .inline-comment-text {
     color: var(--color-text-secondary);
-    font: var(--echoes-typography-text-default-regular); /* 14px */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
     line-height: 1.5;
     margin: 0;
 }
@@ -1402,7 +1410,10 @@ body {
     background: none;
     border: none;
     color: var(--color-link);
-    font: var(--echoes-typography-text-small-regular); /* 12px */
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-75); /* 12px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
+    line-height: var(--echoes-line-height-100);
     cursor: pointer;
     padding: 0;
     transition: color var(--transition-base);

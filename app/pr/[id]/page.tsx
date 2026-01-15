@@ -312,16 +312,10 @@ export default function PRDetailPage() {
                   <span className="metadata-item">Last analysis 1 month ago</span>
                   <span className="metadata-separator"></span>
                   <span className="metadata-item">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style={{ opacity: 0.6 }}>
-                      <rect x="2" y="2" width="4" height="4" rx="1"/>
-                    </svg>
                     d785751e
                   </span>
                   <span className="metadata-separator"></span>
                   <span className="metadata-item">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" style={{ opacity: 0.6 }}>
-                      <path d="M3 2l3 3-3 3V2zM6 5l3 3-3 3V5z"/>
-                    </svg>
                     felix/fixMise2 → master
                   </span>
                   <span className="metadata-separator"></span>
