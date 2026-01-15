@@ -1,12 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'next/navigation';
 
 export default function PRDetailPage() {
-  useEffect(() => {
-    document.title = 'Review - SonarQube Cloud';
-  }, []);
   const params = useParams();
   const [showDescription, setShowDescription] = useState(true);
   const [showDiscussion, setShowDiscussion] = useState(true);

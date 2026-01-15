@@ -1292,23 +1292,29 @@ body {
     transition: background-color var(--transition-fast);
 }
 
-.line-number:hover,
-.line-number:hover ~ .line-comment-toggle {
-    background-color: rgba(33, 150, 243, 0.15);
-}
-
-.line-comment-toggle:hover {
-    background-color: rgba(33, 150, 243, 0.15);
-}
-
 .line-comment-toggle {
     width: 20px;
     padding: 0;
     text-align: center;
     vertical-align: middle;
     border-right: 1px solid var(--color-border-secondary);
-    cursor: pointer;
     transition: background-color var(--transition-fast);
+    cursor: pointer;
+}
+
+/* Unified hover state using :has() selector */
+.code-line:has(.line-number:hover) .line-number,
+.code-line:has(.line-number:hover) .line-comment-toggle,
+.code-line:has(.line-comment-toggle:hover) .line-number,
+.code-line:has(.line-comment-toggle:hover) .line-comment-toggle {
+    background-color: rgba(33, 150, 243, 0.15);
+}
+
+.code-line:has(.line-number:hover) .line-sign,
+.code-line:has(.line-number:hover) .line-content,
+.code-line:has(.line-comment-toggle:hover) .line-sign,
+.code-line:has(.line-comment-toggle:hover) .line-content {
+    background-color: rgba(33, 150, 243, 0.15) !important;
 }
 
 .add-comment-btn {
@@ -1327,8 +1333,8 @@ body {
     pointer-events: none;
 }
 
-.line-number:hover ~ .line-comment-toggle .add-comment-btn,
-.line-comment-toggle:hover .add-comment-btn {
+.code-line:has(.line-number:hover) .add-comment-btn,
+.code-line:has(.line-comment-toggle:hover) .add-comment-btn {
     opacity: 1;
 }
 
@@ -1336,13 +1342,6 @@ body {
 .code-line.has-comment:hover .add-comment-btn,
 .code-line.has-comment:has(+ .inline-comment-row:hover) .add-comment-btn {
     opacity: 1;
-}
-
-.line-number:hover ~ .line-sign,
-.line-number:hover ~ .line-content,
-.line-comment-toggle:hover ~ .line-sign,
-.line-comment-toggle:hover ~ .line-content {
-    background-color: rgba(33, 150, 243, 0.15) !important;
 }
 
 /* Hover on code line with comment also highlights the inline comment row below */
