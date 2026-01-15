@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 
 export default function PRDetailPage() {
@@ -13,6 +13,90 @@ export default function PRDetailPage() {
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewType, setReviewType] = useState('comment');
   const [reviewComment, setReviewComment] = useState('');
+  const [activeCommentLine, setActiveCommentLine] = useState<string | null>(null);
+  const [newCommentText, setNewCommentText] = useState('');
+  const commentInputRef = useRef<HTMLDivElement>(null);
+
+  const handleLineClick = (lineId: string) => {
+    setActiveCommentLine(lineId);
+    setNewCommentText('');
+    // Auto-focus will be handled by the input component
+  };
+
+  const handleCommentSubmit = (lineId: string) => {
+    if (newCommentText.trim()) {
+      // TODO: Submit comment to API
+      console.log(`Submitting comment for line ${lineId}:`, newCommentText);
+      setActiveCommentLine(null);
+      setNewCommentText('');
+    }
+  };
+
+  const handleCommentCancel = () => {
+    setActiveCommentLine(null);
+    setNewCommentText('');
+  };
+
+  // Click outside handler to cancel comment input
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeCommentLine && commentInputRef.current && !commentInputRef.current.contains(event.target as Node)) {
+        handleCommentCancel();
+      }
+    };
+
+    if (activeCommentLine) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeCommentLine]);
+
+  // Render new comment input row
+  const renderNewCommentInput = (lineId: string) => {
+    if (activeCommentLine !== lineId) return null;
+
+    return (
+      <tr className="inline-comment-row new-comment-row">
+        <td className="line-number"></td>
+        <td className="line-comment-toggle"></td>
+        <td colSpan={2}>
+          <div className="inline-comment-container" ref={commentInputRef}>
+            <div className="inline-comment new-comment-input">
+              <div className="inline-comment-avatar">F</div>
+              <div className="inline-comment-content">
+                <textarea
+                  className="new-comment-textarea"
+                  placeholder="Add a comment..."
+                  value={newCommentText}
+                  onChange={(e) => setNewCommentText(e.target.value)}
+                  autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                      handleCommentSubmit(lineId);
+                    } else if (e.key === 'Escape') {
+                      handleCommentCancel();
+                    }
+                  }}
+                />
+                <button
+                  className="submit-comment-btn"
+                  onClick={() => handleCommentSubmit(lineId)}
+                  disabled={!newCommentText.trim()}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 3l5 5-5 5V9H3V7h5V3z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    );
+  };
 
   // Mock PR data - in real app this would come from API
   const prData = {
@@ -771,8 +855,8 @@ export default function PRDetailPage() {
                       <table className="code-table">
                         <tbody>
                           <tr className="code-line added">
-                            <td className="line-number">1</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line1')}>1</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line1')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -785,9 +869,10 @@ export default function PRDetailPage() {
                               <span className="code-keyword">name:</span> NPM Setup
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line1')}
                           <tr className="code-line added">
-                            <td className="line-number">2</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line2')}>2</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line2')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -800,9 +885,10 @@ export default function PRDetailPage() {
                               <span className="code-keyword">description:</span> Action to configure NPM registry with Artifactory token from Vault
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line2')}
                           <tr className="code-line added">
-                            <td className="line-number">3</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line3')}>3</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line3')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -813,9 +899,10 @@ export default function PRDetailPage() {
                             <td className="line-sign">+</td>
                             <td className="line-content"></td>
                           </tr>
+                          {renderNewCommentInput('file1-line3')}
                           <tr className="code-line added has-comment">
-                            <td className="line-number">4</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line4')}>4</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line4')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -828,6 +915,7 @@ export default function PRDetailPage() {
                               <span className="code-keyword">runs:</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line4')}
                           <tr className="inline-comment-row">
                             <td className="line-number"></td>
                             <td className="line-comment-toggle"></td>
@@ -853,8 +941,8 @@ export default function PRDetailPage() {
                             </td>
                           </tr>
                           <tr className="code-line added">
-                            <td className="line-number">5</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line5')}>5</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line5')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -867,9 +955,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">  </span><span className="code-keyword">using:</span> <span className="code-string">"composite"</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line5')}
                           <tr className="code-line added">
-                            <td className="line-number">6</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line6')}>6</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line6')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -882,9 +971,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">  </span><span className="code-keyword">steps:</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line6')}
                           <tr className="code-line added">
-                            <td className="line-number">7</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line7')}>7</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line7')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -897,6 +987,7 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Get vault secrets
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line7')}
                         </tbody>
                       </table>
                     </div>
@@ -937,8 +1028,8 @@ export default function PRDetailPage() {
                       <table className="code-table">
                         <tbody>
                           <tr className="code-line">
-                            <td className="line-number">18</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line8')}>18</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line8')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -951,9 +1042,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">  </span><span className="code-keyword">steps:</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line8')}
                           <tr className="code-line removed">
-                            <td className="line-number">19</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line9')}>19</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line9')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -966,9 +1058,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Setup Node.js
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line9')}
                           <tr className="code-line removed">
-                            <td className="line-number">20</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line10')}>20</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line10')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -981,9 +1074,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">      </span><span className="code-keyword">uses:</span> actions/setup-node@v3
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line10')}
                           <tr className="code-line removed">
-                            <td className="line-number">21</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line11')}>21</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line11')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -996,9 +1090,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">      </span><span className="code-keyword">with:</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line11')}
                           <tr className="code-line removed">
-                            <td className="line-number">22</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line12')}>22</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line12')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1011,9 +1106,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">        </span><span className="code-keyword">node-version:</span> <span className="code-string">'18'</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line12')}
                           <tr className="code-line removed">
-                            <td className="line-number">23</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line13')}>23</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line13')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1026,9 +1122,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">        </span><span className="code-keyword">cache:</span> <span className="code-string">'npm'</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line13')}
                           <tr className="code-line removed">
-                            <td className="line-number">24</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line14')}>24</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line14')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1039,9 +1136,10 @@ export default function PRDetailPage() {
                             <td className="line-sign">-</td>
                             <td className="line-content"></td>
                           </tr>
+                          {renderNewCommentInput('file1-line14')}
                           <tr className="code-line removed">
-                            <td className="line-number">25</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line15')}>25</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line15')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1054,9 +1152,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Install dependencies
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line15')}
                           <tr className="code-line added">
-                            <td className="line-number">19</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line16')}>19</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line16')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1069,9 +1168,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Setup NPM
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line16')}
                           <tr className="code-line added">
-                            <td className="line-number">20</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line17')}>20</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line17')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1084,9 +1184,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">      </span><span className="code-keyword">uses:</span> ./github/actions/npm-setup
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line17')}
                           <tr className="code-line">
-                            <td className="line-number">21</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line18')}>21</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line18')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1097,9 +1198,10 @@ export default function PRDetailPage() {
                             <td className="line-sign"></td>
                             <td className="line-content"></td>
                           </tr>
+                          {renderNewCommentInput('file1-line18')}
                           <tr className="code-line">
-                            <td className="line-number">22</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line19')}>22</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line19')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1112,6 +1214,7 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Run build
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line19')}
                         </tbody>
                       </table>
                     </div>
@@ -1152,8 +1255,8 @@ export default function PRDetailPage() {
                       <table className="code-table">
                         <tbody>
                           <tr className="code-line">
-                            <td className="line-number">32</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line20')}>32</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line20')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1166,9 +1269,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">  </span><span className="code-keyword">steps:</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line20')}
                           <tr className="code-line removed">
-                            <td className="line-number">33</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line21')}>33</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line21')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1181,9 +1285,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">uses:</span> actions/setup-node@v3
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line21')}
                           <tr className="code-line removed">
-                            <td className="line-number">34</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line22')}>34</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line22')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1196,9 +1301,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">      </span><span className="code-keyword">with:</span>
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line22')}
                           <tr className="code-line added">
-                            <td className="line-number">33</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line23')}>33</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line23')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1211,9 +1317,10 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">uses:</span> ./github/actions/npm-setup
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line23')}
                           <tr className="code-line">
-                            <td className="line-number">34</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line24')}>34</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line24')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1224,9 +1331,10 @@ export default function PRDetailPage() {
                             <td className="line-sign"></td>
                             <td className="line-content"></td>
                           </tr>
+                          {renderNewCommentInput('file1-line24')}
                           <tr className="code-line">
-                            <td className="line-number">35</td>
-                            <td className="line-comment-toggle">
+                            <td className="line-number" onClick={() => handleLineClick('file1-line25')}>35</td>
+                            <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line25')}>
                               <button className="add-comment-btn" aria-label="Add comment">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                   <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
@@ -1239,6 +1347,7 @@ export default function PRDetailPage() {
                               <span className="code-indent">    </span>- <span className="code-keyword">name:</span> Deploy to production
                             </td>
                           </tr>
+                          {renderNewCommentInput('file1-line25')}
                         </tbody>
                       </table>
                     </div>
