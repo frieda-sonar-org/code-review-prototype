@@ -1,3 +1,7 @@
+import Link from 'next/link';
+
+const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
+
 export default function PullRequestsPage() {
   return (
     <div>
@@ -10,7 +14,7 @@ export default function PullRequestsPage() {
             </svg>
           </button>
           <div className="logo">
-            <img src="/Sonar Qube Cloud.svg" alt="SonarQube Cloud" width="157" height="36" />
+            <img src={`${basePath}/Sonar Qube Cloud.svg`} alt="SonarQube Cloud" width="157" height="36" />
           </div>
           <nav className="top-nav-center">
             <a href="#" className="nav-link">My Projects</a>
@@ -259,7 +263,7 @@ export default function PullRequestsPage() {
               { id: '27', title: '27 - ASASTSCAN-193 Add repox access token to the pipeline for the integr...', date: '1 month ago', commit: '43eb1612', icon: 'grid' },
               { id: '26', title: '26 - SC-35844 Add required secrets', date: '1 month ago', commit: '8f76eaaf', icon: 'grid' },
             ].map((pr, index) => (
-              <a key={index} href={`/pr/${pr.id}`} className="pr-item">
+              <Link key={index} href={`/pr/${pr.id}`} className="pr-item">
                 <div className="pr-icon">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
@@ -288,7 +292,7 @@ export default function PullRequestsPage() {
                 </div>
                 <div className="pr-date">{pr.date}</div>
                 <div className="pr-commit">{pr.commit}</div>
-              </a>
+              </Link>
             ))}
           </div>
 

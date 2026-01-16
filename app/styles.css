@@ -1365,6 +1365,63 @@ body {
     background-color: rgba(33, 150, 243, 0.15) !important;
 }
 
+/* New comment input row hover - unified with code line above */
+.code-line:has(+ .new-comment-row:hover) .line-number,
+.code-line:has(+ .new-comment-row:hover) .line-comment-toggle {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row:hover) .line-sign,
+.code-line:has(+ .new-comment-row:hover) .line-content {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row:hover) .add-comment-btn {
+    opacity: 1;
+}
+
+.new-comment-row:hover .line-number,
+.new-comment-row:hover .line-comment-toggle {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+/* When hovering the code line that has a new comment input open below */
+/* Hover on line number triggers hover for entire code line AND new comment row */
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-number,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-sign,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-content {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row):has(.line-number:hover) + .new-comment-row .line-number,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) + .new-comment-row .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) + .new-comment-row td:not(.line-number):not(.line-comment-toggle) {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .add-comment-btn {
+    opacity: 1;
+}
+
+/* Hover on comment toggle triggers hover for entire code line AND new comment row */
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-number,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-sign,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-content {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) + .new-comment-row .line-number,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) + .new-comment-row .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) + .new-comment-row td:not(.line-number):not(.line-comment-toggle) {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .add-comment-btn {
+    opacity: 1;
+}
+
 .line-sign {
     color: var(--color-text-muted);
     padding: 2px 12px;
@@ -1500,6 +1557,66 @@ body {
 
 .inline-comment-action:hover {
     color: var(--color-link-hover);
+}
+
+/* New Comment Input */
+.new-comment-input .inline-comment-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.new-comment-textarea {
+    flex: 1;
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    color: var(--color-text-primary);
+    font-family: var(--echoes-font-family-sans);
+    font-size: var(--echoes-font-size-87); /* 14px */
+    font-weight: var(--echoes-font-weight-regular); /* 400 */
+    line-height: 1.5;
+    resize: vertical;
+    min-height: 40px;
+    transition: border-color var(--transition-fast);
+}
+
+.new-comment-textarea:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+}
+
+.new-comment-textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.submit-comment-btn {
+    background-color: var(--color-accent-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1E212E;
+    transition: background-color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.submit-comment-btn:hover:not(:disabled) {
+    background-color: var(--color-accent-primary-hover);
+}
+
+.submit-comment-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-comment-btn svg {
+    transform: rotate(-90deg);
 }
 
 /* Review Dropdown Panel */
