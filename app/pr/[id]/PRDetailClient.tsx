@@ -860,9 +860,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line1')}>1</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line1')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -876,9 +876,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line2')}>2</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line2')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -892,9 +892,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line3')}>3</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line3')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -906,9 +906,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line4')}>4</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line4')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -946,9 +946,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line5')}>5</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line5')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -962,9 +962,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line6')}>6</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line6')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -978,9 +978,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line7')}>7</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line7')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1033,9 +1033,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line8')}>18</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line8')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1049,9 +1049,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line9')}>19</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line9')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1065,9 +1065,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line10')}>20</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line10')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1081,9 +1081,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line11')}>21</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line11')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1097,9 +1097,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line12')}>22</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line12')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1113,9 +1113,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line13')}>23</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line13')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1129,9 +1129,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line14')}>24</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line14')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1143,9 +1143,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line15')}>25</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line15')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1159,9 +1159,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line16')}>19</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line16')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1175,9 +1175,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line17')}>20</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line17')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1191,9 +1191,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line18')}>21</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line18')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1205,9 +1205,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line19')}>22</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line19')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1260,9 +1260,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line20')}>32</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line20')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1276,9 +1276,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line21')}>33</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line21')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1292,9 +1292,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line22')}>34</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line22')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1308,9 +1308,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line23')}>33</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line23')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1324,9 +1324,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line24')}>34</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line24')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
@@ -1338,9 +1338,9 @@ export default function PRDetailClient() {
                             <td className="line-number" onClick={() => handleLineClick('file1-line25')}>35</td>
                             <td className="line-comment-toggle" onClick={() => handleLineClick('file1-line25')}>
                               <button className="add-comment-btn" aria-label="Add comment">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                  <path d="M2 1h12v10H9l-2 2-2-2H2V1z" fill="currentColor"/>
-                                  <path d="M8 4v4M6 6h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                  <path d="M12 8v8M8 12h8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                                 </svg>
                               </button>
                             </td>
