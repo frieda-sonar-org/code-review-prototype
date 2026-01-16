@@ -12,13 +12,14 @@ This is a prototype application replicating the SonarQube Cloud interface. The d
 ## Project Structure
 
 ```
-code-review-v1/
+code-review-prototype/
 ├── app/
 │   ├── components/
 │   │   └── PullRequestsPage.tsx    # Main Pull Requests page component
 │   ├── pr/
 │   │   └── [id]/
-│   │       └── page.tsx            # PR detail page (dynamic route)
+│   │       ├── page.tsx            # PR detail page (server component)
+│   │       └── PRDetailClient.tsx  # PR detail client component
 │   ├── design-system.css           # Color palette and design tokens
 │   ├── design-system-typography.css # Typography tokens (Echoes system)
 │   ├── styles.css                  # Component-specific styles
@@ -29,7 +30,12 @@ code-review-v1/
 ├── public/
 │   ├── Sonar Qube Cloud.svg        # SonarQube Cloud logo
 │   └── favico.png                  # Favicon (public copy)
+├── .github/
+│   └── workflows/
+│       └── deploy.yml              # GitHub Actions deployment workflow
+├── next.config.ts                  # Next.js configuration with static export
 ├── package.json
+├── DEPLOYMENT.md                   # GitHub Pages deployment instructions
 └── README.md
 ```
 
@@ -59,9 +65,9 @@ The design system uses a **custom color palette** inspired by SonarQube Cloud, d
 - `--color-text-disabled`: #637192
 
 #### Accent Colors
-- `--color-accent-primary`: #d4a5ff (Purple - primary actions)
-- `--color-accent-primary-hover`: #e5d5ff
-- `--color-accent-primary-active`: #ede2ff
+- `--color-accent-primary`: #4b9fd8 (Blue - primary actions)
+- `--color-accent-primary-hover`: #6bb8ec
+- `--color-accent-primary-active`: #85c5f0
 - `--color-accent-secondary`: #4b9fd8 (Blue - icons, links)
 - `--color-accent-secondary-hover`: #6bb8ec
 - `--color-link`: #4b9fd8
@@ -82,10 +88,10 @@ The design system uses a **custom color palette** inspired by SonarQube Cloud, d
 - `--color-info-text`: #64b5f6
 
 #### Badge Colors
-- `--color-badge-new`: #d4a5ff (Purple - "New" badge)
-- `--color-badge-new-bg`: rgba(212, 165, 255, 0.2)
-- `--color-badge-beta`: #b084f7 (Purple/Pink - "Beta" badge)
-- `--color-badge-beta-bg`: rgba(176, 132, 247, 0.2)
+- `--color-badge-new`: #4b9fd8 (Blue - "New" badge)
+- `--color-badge-new-bg`: rgba(75, 159, 216, 0.2)
+- `--color-badge-beta`: #4b9fd8 (Blue - "Beta" badge)
+- `--color-badge-beta-bg`: rgba(75, 159, 216, 0.2)
 - `--color-badge-private`: #8a8f95
 - `--color-badge-private-bg`: #3c4248
 
@@ -204,7 +210,14 @@ npm run dev
 ```
 The app will be available at: http://localhost:3000
 
-### Build for Production
+### Build for Production (Static Export)
+```bash
+NEXT_TURBOPACK_EXPERIMENTAL_USE_SYSTEM_TLS_CERTS=1 NODE_ENV=production npm run build
+```
+
+This generates a static export in the `out/` directory for deployment to GitHub Pages.
+
+### Build for Server
 ```bash
 npm run build
 npm start
@@ -295,6 +308,40 @@ The application is **dark mode by default** with no light mode option:
       └── Files tab (Groups, Quality Gate, File changes with diffs)
 ```
 
+## GitHub Pages Deployment
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+**Live URL**: https://frieda-sonar-org.github.io/code-review-prototype/
+
+### Configuration
+- **Repository**: `frieda-sonar-org/code-review-prototype`
+- **Base Path**: `/code-review-prototype` (configured in next.config.ts)
+- **Deployment**: Automatic on push to `main` branch
+- **Build Method**: Static export (`output: 'export'`)
+
+### Key Files
+- `.github/workflows/deploy.yml` - GitHub Actions workflow
+- `next.config.ts` - Next.js configuration with:
+  - Static export enabled in production
+  - Base path for GitHub Pages subdirectory
+  - Asset prefix for correct resource URLs
+  - Unoptimized images (required for static export)
+
+### How It Works
+1. Push to `main` branch triggers GitHub Actions
+2. Workflow installs dependencies and runs production build
+3. Static files are generated in `out/` directory
+4. Files are deployed to GitHub Pages
+5. Site is accessible at the base path URL
+
+### Static Generation
+- Homepage: Pre-rendered at build time
+- PR Detail Pages: 50 pages pre-generated (IDs 1-50) via `generateStaticParams()`
+- All routes use Next.js Link component for proper base path handling
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
+
 ## Future Development
 
 ### Completed Features
@@ -330,7 +377,7 @@ The application is **dark mode by default** with no light mode option:
 - **Review Modal** styling:
   - Compact textarea (100px min-height)
   - Reduced padding on review options
-  - Primary CTA color for submit button (#d4a5ff)
+  - Primary CTA color for submit button (blue)
 
 ## Notes
 - All content is currently dummy data
@@ -350,6 +397,27 @@ The application is **dark mode by default** with no light mode option:
 ## Development History
 
 ### Recent Changes
+- **January 16, 2026**:
+  - **GitHub Pages Deployment**: Successfully deployed to GitHub Pages
+    - Fixed npm registry authentication issue (JFrog Artifactory → public npm)
+    - Updated package-lock.json to use public registry URLs
+    - Configured GitHub Actions workflow for automatic deployment
+    - Set up static export with proper base path configuration
+  - **Routing Fixes**: Updated PR links to use Next.js Link component
+    - Changed from plain `<a>` tags to `Link` component for proper base path handling
+    - Links now correctly navigate to `/code-review-prototype/pr/:id`
+  - **Asset Path Fixes**: Added base path to static assets
+    - SonarQube logo now loads correctly on both homepage and PR detail pages
+    - Created base path constant for consistent URL handling across components
+  - **Color Scheme Update**: Changed primary accent color from purple to blue
+    - Primary accent: #d4a5ff → #4b9fd8
+    - Updated all button colors, badges, and accent elements
+    - Maintains consistency with SonarQube Cloud's blue theme
+  - **Hover State Improvements**: Enhanced inline comment interaction
+    - Hovering line number now highlights entire code line and comment input row
+    - Unified hover behavior for consistent user experience
+    - Comment icon appears on hover for all related elements
+
 - **January 15, 2026**:
   - **Echoes Typography System Integration**: Implemented full Echoes React Design System typography
     - Installed Inter (sans-serif) and Ubuntu Mono (monospace) fonts via next/font/google
@@ -398,5 +466,5 @@ The application is **dark mode by default** with no light mode option:
 
 ---
 
-**Last Updated**: January 15, 2026
+**Last Updated**: January 16, 2026
 **Created by**: Claude Code Session
