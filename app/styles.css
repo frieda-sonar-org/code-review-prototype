@@ -1386,26 +1386,39 @@ body {
 }
 
 /* When hovering the code line that has a new comment input open below */
-.code-line:has(+ .new-comment-row) .line-number:hover,
-.code-line:has(+ .new-comment-row) .line-comment-toggle:hover {
+/* Hover on line number triggers hover for entire code line AND new comment row */
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-number,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-sign,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .line-content {
     background-color: rgba(33, 150, 243, 0.15) !important;
 }
 
-.code-line:has(+ .new-comment-row) .line-number:hover ~ .line-sign,
-.code-line:has(+ .new-comment-row) .line-number:hover ~ .line-content,
-.code-line:has(+ .new-comment-row) .line-comment-toggle:hover ~ .line-sign,
-.code-line:has(+ .new-comment-row) .line-comment-toggle:hover ~ .line-content {
+.code-line:has(+ .new-comment-row):has(.line-number:hover) + .new-comment-row .line-number,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) + .new-comment-row .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-number:hover) + .new-comment-row td:not(.line-number):not(.line-comment-toggle) {
     background-color: rgba(33, 150, 243, 0.15) !important;
 }
 
-.code-line:has(+ .new-comment-row):hover .line-number,
-.code-line:has(+ .new-comment-row):hover .line-comment-toggle,
-.code-line:has(+ .new-comment-row):hover .line-sign,
-.code-line:has(+ .new-comment-row):hover .line-content {
+.code-line:has(+ .new-comment-row):has(.line-number:hover) .add-comment-btn {
+    opacity: 1;
+}
+
+/* Hover on comment toggle triggers hover for entire code line AND new comment row */
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-number,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-sign,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .line-content {
     background-color: rgba(33, 150, 243, 0.15) !important;
 }
 
-.code-line:has(+ .new-comment-row):hover .add-comment-btn {
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) + .new-comment-row .line-number,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) + .new-comment-row .line-comment-toggle,
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) + .new-comment-row td:not(.line-number):not(.line-comment-toggle) {
+    background-color: rgba(33, 150, 243, 0.15) !important;
+}
+
+.code-line:has(+ .new-comment-row):has(.line-comment-toggle:hover) .add-comment-btn {
     opacity: 1;
 }
 
