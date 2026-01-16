@@ -36,9 +36,9 @@
   /* === ACCENT COLORS === */
 
   /* Primary Accent */
-  --color-accent-primary: #d4a5ff; /* Purple */
-  --color-accent-primary-hover: #e5d5ff;
-  --color-accent-primary-active: #ede2ff;
+  --color-accent-primary: #4b9fd8; /* Blue */
+  --color-accent-primary-hover: #6bb8ec;
+  --color-accent-primary-active: #85c5f0;
 
   /* Secondary Accent - Blue (icons, links) */
   --color-accent-secondary: #4b9fd8;
@@ -76,12 +76,12 @@
   /* === BADGE COLORS === */
 
   /* "New" Badge */
-  --color-badge-new: #d4a5ff;
-  --color-badge-new-bg: rgba(212, 165, 255, 0.2);
+  --color-badge-new: #4b9fd8;
+  --color-badge-new-bg: rgba(75, 159, 216, 0.2);
 
   /* "Beta" Badge */
-  --color-badge-beta: #b084f7;
-  --color-badge-beta-bg: rgba(176, 132, 247, 0.2);
+  --color-badge-beta: #4b9fd8;
+  --color-badge-beta-bg: rgba(75, 159, 216, 0.2);
 
   /* "Private" Badge */
   --color-badge-private: #8a8f95;
