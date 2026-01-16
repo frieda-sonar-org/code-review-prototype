@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
+
 export default function PullRequestsPage() {
   return (
     <div>
@@ -12,7 +14,7 @@ export default function PullRequestsPage() {
             </svg>
           </button>
           <div className="logo">
-            <img src="/Sonar Qube Cloud.svg" alt="SonarQube Cloud" width="157" height="36" />
+            <img src={`${basePath}/Sonar Qube Cloud.svg`} alt="SonarQube Cloud" width="157" height="36" />
           </div>
           <nav className="top-nav-center">
             <a href="#" className="nav-link">My Projects</a>

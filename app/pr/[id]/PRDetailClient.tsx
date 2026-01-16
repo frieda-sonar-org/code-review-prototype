@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
+
 export default function PRDetailClient() {
   const params = useParams();
   const [showDescription, setShowDescription] = useState(true);
@@ -164,7 +166,7 @@ export default function PRDetailClient() {
             </svg>
           </button>
           <div className="logo">
-            <img src="/Sonar Qube Cloud.svg" alt="SonarQube Cloud" width="157" height="36" />
+            <img src={`${basePath}/Sonar Qube Cloud.svg`} alt="SonarQube Cloud" width="157" height="36" />
           </div>
           <nav className="top-nav-center">
             <a href="#" className="nav-link">My Projects</a>
