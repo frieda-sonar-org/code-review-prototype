@@ -1328,7 +1328,7 @@ body {
 .add-comment-btn {
     background: none;
     border: none;
-    color: var(--color-success);
+    color: #000000;
     cursor: pointer;
     padding: 0;
     display: inline-flex;
