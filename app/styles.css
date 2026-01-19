@@ -1226,6 +1226,18 @@ body {
     color: var(--color-text-muted);
 }
 
+.coverage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #2d3238;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: var(--color-text-primary);
+    font-size: 12px;
+    font-weight: 500;
+}
+
 .duplication,
 .issues {
     color: var(--color-text-secondary);

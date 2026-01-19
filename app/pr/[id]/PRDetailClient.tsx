@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import AddCommentButton from '@/app/components/AddCommentButton';
 import CodeLine from '@/app/components/CodeLine';
+import CoverageIndicator from '@/app/components/CoverageIndicator';
 
 const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
 
@@ -674,23 +675,17 @@ export default function PRDetailClient() {
                 </div>
                 <div className="quality-metrics-inline">
                   <div className="metric-inline">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                      <circle cx="8" cy="8" r="6" stroke="#4caf50" strokeWidth="1.5" fill="none"/>
-                    </svg>
+                    <CoverageIndicator percentage={100} size={16} />
                     <span>Reliability Rating</span>
                     <span className="metric-required">Rating required B</span>
                   </div>
                   <div className="metric-inline">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                      <circle cx="8" cy="8" r="6" stroke="#4caf50" strokeWidth="1.5" fill="none"/>
-                    </svg>
+                    <CoverageIndicator percentage={0} size={16} inverted={true} />
                     <span>0.0% Duplicated Lines (%)</span>
                     <span className="metric-required">≤ 3.0% required</span>
                   </div>
                   <div className="metric-inline">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                      <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                    </svg>
+                    <CoverageIndicator percentage={100} size={16} />
                     <span>100% Security Hotspots Reviewed</span>
                     <span className="metric-required">≥ 100% required</span>
                   </div>
@@ -843,6 +838,11 @@ export default function PRDetailClient() {
                         <span className="additions">+22</span>
                         <span className="deletions">-0</span>
                         <span className="separator">•</span>
+                        <span className="coverage-badge">
+                          <CoverageIndicator percentage={86.7} size={14} />
+                          Coverage: 86.7%
+                        </span>
+                        <span className="separator">•</span>
                         <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
                         <span className="issues">Issues: 0</span>
@@ -980,6 +980,11 @@ export default function PRDetailClient() {
                       <div className="code-diff-stats">
                         <span className="additions">+2</span>
                         <span className="deletions">-7</span>
+                        <span className="separator">•</span>
+                        <span className="coverage-badge">
+                          <CoverageIndicator percentage={65} size={14} />
+                          Coverage: 65.0%
+                        </span>
                         <span className="separator">•</span>
                         <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
@@ -1147,6 +1152,11 @@ export default function PRDetailClient() {
                       <div className="code-diff-stats">
                         <span className="additions">+1</span>
                         <span className="deletions">-2</span>
+                        <span className="separator">•</span>
+                        <span className="coverage-badge">
+                          <CoverageIndicator percentage={45} size={14} />
+                          Coverage: 45.0%
+                        </span>
                         <span className="separator">•</span>
                         <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
