@@ -14,7 +14,11 @@ export default function PRDetailClient() {
   const [showDiscussion, setShowDiscussion] = useState(true);
   const [activeTab, setActiveTab] = useState('context');
   const [showGroupFiles, setShowGroupFiles] = useState(false);
+  const [showGroupFiles2, setShowGroupFiles2] = useState(false);
+  const [showGroupFiles3, setShowGroupFiles3] = useState(false);
   const [showFileChanges, setShowFileChanges] = useState(true);
+  const [showFileChanges2, setShowFileChanges2] = useState(true);
+  const [showFileChanges3, setShowFileChanges3] = useState(true);
   const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewType, setReviewType] = useState('comment');
   const [reviewComment, setReviewComment] = useState('');
@@ -703,8 +707,10 @@ export default function PRDetailClient() {
                 <div className="files-groups">
                   <div className="files-groups-header">
                   <span>Groups</span>
-                  <span className="groups-count">0 / 1</span>
+                  <span className="groups-count">0 / 3</span>
                 </div>
+
+                {/* Group 1: CI/CD Workflow */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
@@ -720,7 +726,7 @@ export default function PRDetailClient() {
                         }}
                         onClick={() => setShowGroupFiles(!showGroupFiles)}
                       >
-                        CI/CD Workflow Refactoring with NPM Setup
+                        CI/CD Workflow Refactoring
                       </div>
                       {showGroupFiles && (
                         <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
@@ -768,6 +774,122 @@ export default function PRDetailClient() {
                         fill="currentColor"
                         style={{
                           transform: showGroupFiles ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Group 2: API Authentication */}
+                <div className="file-group">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
+                    <div style={{ flex: 1, overflow: 'hidden' }}>
+                      <div
+                        className="file-group-name"
+                        style={{
+                          fontWeight: 500,
+                          marginBottom: showGroupFiles2 ? '8px' : '0',
+                          cursor: 'pointer'
+                        }}
+                        onClick={() => setShowGroupFiles2(!showGroupFiles2)}
+                      >
+                        API Authentication & Security
+                      </div>
+                      {showGroupFiles2 && (
+                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
+                          <div style={{
+                            marginBottom: '4px',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/middleware/auth.ts
+                          </div>
+                          <div style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            src/api/refresh-token.ts
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="file-group-toggle"
+                      onClick={() => setShowGroupFiles2(!showGroupFiles2)}
+                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showGroupFiles2 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Group 3: Database Migration */}
+                <div className="file-group">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
+                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                    </svg>
+                    <div style={{ flex: 1, overflow: 'hidden' }}>
+                      <div
+                        className="file-group-name"
+                        style={{
+                          fontWeight: 500,
+                          marginBottom: showGroupFiles3 ? '8px' : '0',
+                          cursor: 'pointer'
+                        }}
+                        onClick={() => setShowGroupFiles3(!showGroupFiles3)}
+                      >
+                        Database Schema Migration
+                      </div>
+                      {showGroupFiles3 && (
+                        <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', paddingLeft: '8px' }}>
+                          <div style={{
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            direction: 'rtl',
+                            textAlign: 'left'
+                          }}>
+                            migrations/20260119_add_user_preferences.sql
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      className="file-group-toggle"
+                      onClick={() => setShowGroupFiles3(!showGroupFiles3)}
+                      style={{ marginLeft: '8px', flexShrink: 0, marginTop: '2px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showGroupFiles3 ? 'rotate(0deg)' : 'rotate(-90deg)',
                           transition: 'transform 0.2s'
                         }}
                       >
@@ -1241,6 +1363,508 @@ export default function PRDetailClient() {
                       </table>
                     </div>
                   </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Second File Change Card - API Authentication Updates */}
+                <div className="file-change-card">
+                  <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                      <h3 style={{ margin: 0 }}>API Authentication & Security Enhancements</h3>
+                      <span className="needs-review-badge">Needs review</span>
+                      <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+                        <span className="file-count">2 files</span>
+                        <span className="additions">+47</span>
+                        <span className="deletions">-12</span>
+                      </div>
+                    </div>
+                    <button
+                      className="pin-button"
+                      onClick={() => setShowFileChanges2(!showFileChanges2)}
+                      style={{ marginLeft: '12px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showFileChanges2 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {showFileChanges2 && (
+                    <>
+                      <div className="file-change-description">
+                        <p>Enhanced API authentication with JWT token refresh mechanism and improved error handling for expired tokens.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify the token refresh logic handles edge cases properly, check that error messages don't leak sensitive information, and ensure the new middleware is correctly integrated.</p>
+                      </div>
+
+                      {/* Code Diff 1 */}
+                      <div className="code-diff-container">
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">src/middleware/auth.ts</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+35</span>
+                            <span className="deletions">-8</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={92} size={14} />
+                              Coverage: 92.0%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 0</span>
+                            <button className="check-button">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="code-diff-content">
+                          <table className="code-table">
+                            <tbody>
+                              <tr className="code-line">
+                                <td className="line-number">15</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign"></td>
+                                <td className="line-content">
+                                  <span className="code-keyword">export</span> <span className="code-keyword">async function</span> verifyToken(token: <span className="code-keyword">string</span>) {'{'}
+                                </td>
+                              </tr>
+                              <tr className="code-line removed">
+                                <td className="line-number">16</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">-</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span><span className="code-keyword">return</span> jwt.verify(token, SECRET_KEY);
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">17</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span><span className="code-keyword">try</span> {'{'}
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">18</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">    </span><span className="code-keyword">const</span> decoded = <span className="code-keyword">await</span> jwt.verify(token, SECRET_KEY);
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">19</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">    </span><span className="code-keyword">return</span> {'{'} valid: <span className="code-keyword">true</span>, data: decoded {'}'};
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">20</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>{'}'} <span className="code-keyword">catch</span> (error) {'{'}
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">21</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">    </span><span className="code-keyword">return</span> {'{'} valid: <span className="code-keyword">false</span>, error: <span className="code-string">'Invalid or expired token'</span> {'}'};
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">22</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>{'}'}
+                                </td>
+                              </tr>
+                              <tr className="code-line">
+                                <td className="line-number">23</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign"></td>
+                                <td className="line-content">
+                                  {'}'}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      {/* Code Diff 2 */}
+                      <div className="code-diff-container">
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">src/api/refresh-token.ts</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+12</span>
+                            <span className="deletions">-4</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={78} size={14} />
+                              Coverage: 78.0%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 1</span>
+                            <button className="check-button">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="code-diff-content">
+                          <table className="code-table">
+                            <tbody>
+                              <tr className="code-line added">
+                                <td className="line-number">1</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-keyword">import</span> {'{'} generateToken {'}'} <span className="code-keyword">from</span> <span className="code-string">'./auth'</span>;
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">2</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-keyword">import</span> {'{'} validateRefreshToken {'}'} <span className="code-keyword">from</span> <span className="code-string">'./utils'</span>;
+                                </td>
+                              </tr>
+                              <tr className="code-line">
+                                <td className="line-number">3</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign"></td>
+                                <td className="line-content"></td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">4</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-keyword">export async function</span> refreshAccessToken(refreshToken: <span className="code-keyword">string</span>) {'{'}
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">5</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span><span className="code-keyword">const</span> isValid = <span className="code-keyword">await</span> validateRefreshToken(refreshToken);
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">6</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span><span className="code-keyword">if</span> (!isValid) <span className="code-keyword">throw new</span> Error(<span className="code-string">'Invalid refresh token'</span>);
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">7</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span><span className="code-keyword">return</span> generateToken(isValid.userId);
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">8</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  {'}'}
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Third File Change Card - Database Migration Scripts */}
+                <div className="file-change-card">
+                  <div className="file-change-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+                      <h3 style={{ margin: 0 }}>Database Schema Migration - User Preferences</h3>
+                      <span className="needs-review-badge">Needs review</span>
+                      <div className="file-change-meta" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+                        <span className="file-count">1 file</span>
+                        <span className="additions">+28</span>
+                        <span className="deletions">-0</span>
+                      </div>
+                    </div>
+                    <button
+                      className="pin-button"
+                      onClick={() => setShowFileChanges3(!showFileChanges3)}
+                      style={{ marginLeft: '12px' }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        style={{
+                          transform: showFileChanges3 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {showFileChanges3 && (
+                    <>
+                      <div className="file-change-description">
+                        <p>Added new database migration to create user_preferences table for storing theme, language, and notification settings.</p>
+                        <p className="review-focus"><strong>Review Focus:</strong> Verify the migration script includes proper indexes for frequently queried columns, check foreign key constraints are correctly defined, and ensure the rollback script is complete.</p>
+                      </div>
+
+                      {/* Code Diff */}
+                      <div className="code-diff-container">
+                        <div className="code-diff-header">
+                          <div className="code-diff-toggle">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                            </svg>
+                            <span className="code-file-path">migrations/20260119_add_user_preferences.sql</span>
+                            <button className="copy-button">
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                                <rect x="2" y="2" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <rect x="4" y="4" width="8" height="8" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="code-diff-stats">
+                            <span className="additions">+28</span>
+                            <span className="deletions">-0</span>
+                            <span className="separator">•</span>
+                            <span className="coverage-badge">
+                              <CoverageIndicator percentage={0} size={14} />
+                              Coverage: 0.0%
+                            </span>
+                            <span className="separator">•</span>
+                            <span className="duplication">Duplications: 0.0%</span>
+                            <span className="separator">•</span>
+                            <span className="issues">Issues: 0</span>
+                            <button className="check-button">
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                                <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="code-diff-content">
+                          <table className="code-table">
+                            <tbody>
+                              <tr className="code-line added">
+                                <td className="line-number">1</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-keyword">CREATE TABLE</span> user_preferences (
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">2</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>id <span className="code-keyword">BIGSERIAL PRIMARY KEY</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">3</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>user_id <span className="code-keyword">BIGINT NOT NULL</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">4</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>theme <span className="code-keyword">VARCHAR</span>(20) <span className="code-keyword">DEFAULT</span> <span className="code-string">'light'</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">5</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>language <span className="code-keyword">VARCHAR</span>(10) <span className="code-keyword">DEFAULT</span> <span className="code-string">'en'</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">6</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>notifications_enabled <span className="code-keyword">BOOLEAN DEFAULT TRUE</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">7</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>created_at <span className="code-keyword">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">8</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span>updated_at <span className="code-keyword">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</span>,
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">9</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-indent">  </span><span className="code-keyword">FOREIGN KEY</span> (user_id) <span className="code-keyword">REFERENCES</span> users(id) <span className="code-keyword">ON DELETE CASCADE</span>
+                                </td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">10</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  );
+                                </td>
+                              </tr>
+                              <tr className="code-line">
+                                <td className="line-number">11</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign"></td>
+                                <td className="line-content"></td>
+                              </tr>
+                              <tr className="code-line added">
+                                <td className="line-number">12</td>
+                                <td className="line-comment-toggle">
+                                  <AddCommentButton />
+                                </td>
+                                <td className="line-sign">+</td>
+                                <td className="line-content">
+                                  <span className="code-keyword">CREATE INDEX</span> idx_user_preferences_user_id <span className="code-keyword">ON</span> user_preferences(user_id);
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </>
                   )}
                 </div>
