@@ -26,6 +26,22 @@ export default function PRDetailClient() {
   const [newCommentText, setNewCommentText] = useState('');
   const commentInputRef = useRef<HTMLDivElement>(null);
 
+  // File collapse states (true = expanded, false = collapsed)
+  const [fileExpanded1, setFileExpanded1] = useState(true); // .github/workflows/ci.yml
+  const [fileExpanded2, setFileExpanded2] = useState(true); // package.json
+  const [fileExpanded3, setFileExpanded3] = useState(true); // package-lock.json
+  const [fileExpanded4, setFileExpanded4] = useState(true); // src/services/auth.ts
+  const [fileExpanded5, setFileExpanded5] = useState(true); // src/utils/refresh-token.ts
+  const [fileExpanded6, setFileExpanded6] = useState(true); // migrations/add-user-preferences.sql
+
+  // File checked states (true = marked as reviewed/checked)
+  const [fileChecked1, setFileChecked1] = useState(false);
+  const [fileChecked2, setFileChecked2] = useState(false);
+  const [fileChecked3, setFileChecked3] = useState(false);
+  const [fileChecked4, setFileChecked4] = useState(false);
+  const [fileChecked5, setFileChecked5] = useState(false);
+  const [fileChecked6, setFileChecked6] = useState(false);
+
   const handleLineClick = (lineId: string) => {
     setActiveCommentLine(lineId);
     setNewCommentText('');
@@ -944,8 +960,17 @@ export default function PRDetailClient() {
                       {/* Code Diff */}
                       <div className="code-diff-container">
                     <div className="code-diff-header">
-                      <div className="code-diff-toggle">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <div className="code-diff-toggle" onClick={() => setFileExpanded1(!fileExpanded1)} style={{ cursor: 'pointer' }}>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="currentColor"
+                          style={{
+                            transform: fileExpanded1 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                            transition: 'transform 0.2s ease'
+                          }}
+                        >
                           <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                         </svg>
                         <span className="code-file-path">github/actions/npm-setup/action.yml</span>
@@ -968,7 +993,14 @@ export default function PRDetailClient() {
                         <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
                         <span className="issues">Issues: 0</span>
-                        <button className="check-button">
+                        <button
+                          className="check-button"
+                          onClick={() => {
+                            setFileChecked1(!fileChecked1);
+                            if (!fileChecked1) setFileExpanded1(false);
+                          }}
+                          style={{ color: fileChecked1 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                        >
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                             <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -977,6 +1009,7 @@ export default function PRDetailClient() {
                       </div>
                     </div>
 
+                    {fileExpanded1 && (
                     <div className="code-diff-content">
                       <table className="code-table">
                         <tbody>
@@ -1082,13 +1115,23 @@ export default function PRDetailClient() {
                         </tbody>
                       </table>
                     </div>
+                    )}
                   </div>
 
                   {/* Code Diff - Second File */}
                   <div className="code-diff-container">
                     <div className="code-diff-header">
-                      <div className="code-diff-toggle">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <div className="code-diff-toggle" onClick={() => setFileExpanded2(!fileExpanded2)} style={{ cursor: 'pointer' }}>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="currentColor"
+                          style={{
+                            transform: fileExpanded2 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                            transition: 'transform 0.2s ease'
+                          }}
+                        >
                           <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                         </svg>
                         <span className="code-file-path">.github/workflows/build.yml</span>
@@ -1111,7 +1154,14 @@ export default function PRDetailClient() {
                         <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
                         <span className="issues">Issues: 0</span>
-                        <button className="check-button">
+                        <button
+                          className="check-button"
+                          onClick={() => {
+                            setFileChecked2(!fileChecked2);
+                            if (!fileChecked2) setFileExpanded2(false);
+                          }}
+                          style={{ color: fileChecked2 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                        >
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                             <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -1120,6 +1170,7 @@ export default function PRDetailClient() {
                       </div>
                     </div>
 
+                    {fileExpanded2 && (
                     <div className="code-diff-content">
                       <table className="code-table">
                         <tbody>
@@ -1254,13 +1305,23 @@ export default function PRDetailClient() {
                         </tbody>
                       </table>
                     </div>
+                    )}
                   </div>
 
                   {/* Code Diff - Third File */}
                   <div className="code-diff-container">
                     <div className="code-diff-header">
-                      <div className="code-diff-toggle">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <div className="code-diff-toggle" onClick={() => setFileExpanded3(!fileExpanded3)} style={{ cursor: 'pointer' }}>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="currentColor"
+                          style={{
+                            transform: fileExpanded3 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                            transition: 'transform 0.2s ease'
+                          }}
+                        >
                           <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                         </svg>
                         <span className="code-file-path">.github/workflows/deploy.yml</span>
@@ -1283,7 +1344,14 @@ export default function PRDetailClient() {
                         <span className="duplication">Duplications: 0.0%</span>
                         <span className="separator">•</span>
                         <span className="issues">Issues: 0</span>
-                        <button className="check-button">
+                        <button
+                          className="check-button"
+                          onClick={() => {
+                            setFileChecked3(!fileChecked3);
+                            if (!fileChecked3) setFileExpanded3(false);
+                          }}
+                          style={{ color: fileChecked3 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                        >
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                             <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -1292,6 +1360,7 @@ export default function PRDetailClient() {
                       </div>
                     </div>
 
+                    {fileExpanded3 && (
                     <div className="code-diff-content">
                       <table className="code-table">
                         <tbody>
@@ -1362,6 +1431,7 @@ export default function PRDetailClient() {
                         </tbody>
                       </table>
                     </div>
+                    )}
                   </div>
                     </>
                   )}
@@ -1409,8 +1479,17 @@ export default function PRDetailClient() {
                       {/* Code Diff 1 */}
                       <div className="code-diff-container">
                         <div className="code-diff-header">
-                          <div className="code-diff-toggle">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded4(!fileExpanded4)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded4 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
                               <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                             </svg>
                             <span className="code-file-path">src/middleware/auth.ts</span>
@@ -1433,7 +1512,14 @@ export default function PRDetailClient() {
                             <span className="duplication">Duplications: 0.0%</span>
                             <span className="separator">•</span>
                             <span className="issues">Issues: 0</span>
-                            <button className="check-button">
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked4(!fileChecked4);
+                                if (!fileChecked4) setFileExpanded4(false);
+                              }}
+                              style={{ color: fileChecked4 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
                               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                 <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                                 <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -1442,6 +1528,7 @@ export default function PRDetailClient() {
                           </div>
                         </div>
 
+                        {fileExpanded4 && (
                         <div className="code-diff-content">
                           <table className="code-table">
                             <tbody>
@@ -1538,13 +1625,23 @@ export default function PRDetailClient() {
                             </tbody>
                           </table>
                         </div>
+                        )}
                       </div>
 
                       {/* Code Diff 2 */}
                       <div className="code-diff-container">
                         <div className="code-diff-header">
-                          <div className="code-diff-toggle">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded5(!fileExpanded5)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded5 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
                               <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                             </svg>
                             <span className="code-file-path">src/api/refresh-token.ts</span>
@@ -1567,7 +1664,14 @@ export default function PRDetailClient() {
                             <span className="duplication">Duplications: 0.0%</span>
                             <span className="separator">•</span>
                             <span className="issues">Issues: 1</span>
-                            <button className="check-button">
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked5(!fileChecked5);
+                                if (!fileChecked5) setFileExpanded5(false);
+                              }}
+                              style={{ color: fileChecked5 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
                               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                 <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                                 <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -1576,6 +1680,7 @@ export default function PRDetailClient() {
                           </div>
                         </div>
 
+                        {fileExpanded5 && (
                         <div className="code-diff-content">
                           <table className="code-table">
                             <tbody>
@@ -1660,6 +1765,7 @@ export default function PRDetailClient() {
                             </tbody>
                           </table>
                         </div>
+                        )}
                       </div>
                     </>
                   )}
@@ -1707,8 +1813,17 @@ export default function PRDetailClient() {
                       {/* Code Diff */}
                       <div className="code-diff-container">
                         <div className="code-diff-header">
-                          <div className="code-diff-toggle">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                          <div className="code-diff-toggle" onClick={() => setFileExpanded6(!fileExpanded6)} style={{ cursor: 'pointer' }}>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              style={{
+                                transform: fileExpanded6 ? 'rotate(0deg)' : 'rotate(-90deg)',
+                                transition: 'transform 0.2s ease'
+                              }}
+                            >
                               <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
                             </svg>
                             <span className="code-file-path">migrations/20260119_add_user_preferences.sql</span>
@@ -1731,7 +1846,14 @@ export default function PRDetailClient() {
                             <span className="duplication">Duplications: 0.0%</span>
                             <span className="separator">•</span>
                             <span className="issues">Issues: 0</span>
-                            <button className="check-button">
+                            <button
+                              className="check-button"
+                              onClick={() => {
+                                setFileChecked6(!fileChecked6);
+                                if (!fileChecked6) setFileExpanded6(false);
+                              }}
+                              style={{ color: fileChecked6 ? '#4CAF50' : 'var(--color-text-muted)' }}
+                            >
                               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                                 <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
                                 <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
@@ -1739,6 +1861,8 @@ export default function PRDetailClient() {
                             </button>
                           </div>
                         </div>
+
+                        {fileExpanded6 && (
 
                         <div className="code-diff-content">
                           <table className="code-table">
@@ -1864,6 +1988,7 @@ export default function PRDetailClient() {
                             </tbody>
                           </table>
                         </div>
+                        )}
                       </div>
                     </>
                   )}
