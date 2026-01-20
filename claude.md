@@ -15,7 +15,9 @@ This is a prototype application replicating the SonarQube Cloud interface. The d
 code-review-prototype/
 ├── app/
 │   ├── components/
-│   │   └── PullRequestsPage.tsx    # Main Pull Requests page component
+│   │   ├── PullRequestsPage.tsx    # Main Pull Requests page component
+│   │   ├── CoverageIndicator.tsx   # Donut-shaped coverage indicator
+│   │   └── AddCommentButton.tsx    # Inline comment button
 │   ├── pr/
 │   │   └── [id]/
 │   │       ├── page.tsx            # PR detail page (server component)
@@ -189,12 +191,25 @@ All colors are accessible via CSS custom properties:
 - ✅ **Files Tab**:
   - Quality Gate summary (full-width at top): Passed status with metrics
   - Two-column layout below:
-    - Left sidebar: Groups panel (0/1 groups)
+    - Left sidebar: Groups panel (0/3 groups) with:
+      - Expandable file lists per group
+      - Green checkmark and text when group is marked as reviewed
+      - Folder icons for unreviewed groups
     - Right content: File change cards with:
       - Title, "Needs review" badge
-      - File count, additions/deletions stats
+      - File count, additions/deletions stats with coverage indicators
+      - Coverage badges (Coverage %, Duplicated Lines %, Issues count)
       - Description and review focus
-      - Code diff viewer with syntax highlighting (YAML)
+      - Individual file sections with:
+        - Chevron toggle to expand/collapse code diff
+        - Check button to mark file as reviewed (turns green)
+        - Code diff viewer with syntax highlighting
+        - Inline comment buttons on each line (appears on hover)
+      - "Mark as reviewed" button at group level that:
+        - Marks all files as reviewed
+        - Collapses the group
+        - Toggles to "Mark as needs review" button
+        - Updates sidebar group status
 
 **Design Notes**:
 - All card components use transparent backgrounds with borders (stroke-only design)
@@ -229,6 +244,49 @@ npm run lint
 ```
 
 ## Component Details
+
+### Reusable Components
+
+#### CoverageIndicator Component
+Location: `app/components/CoverageIndicator.tsx`
+
+A donut-shaped circular coverage indicator that visually represents percentage-based metrics.
+
+**Features**:
+- **Full green ring**: 100% coverage (all good)
+- **Full red ring**: 0% coverage (all bad)
+- **Partial ring**: Green/red donut chart for values in between
+- **Inverted mode**: Reverses color logic for metrics where lower is better (e.g., duplicated lines)
+
+**Props**:
+- `percentage`: number (0-100)
+- `size`: number (default: 16px)
+- `inverted`: boolean (default: false)
+
+**Usage**:
+```tsx
+<CoverageIndicator percentage={85} size={16} />
+<CoverageIndicator percentage={12} size={16} inverted={true} />
+```
+
+#### AddCommentButton Component
+Location: `app/components/AddCommentButton.tsx`
+
+A reusable button with a white filled speech bubble icon and black plus symbol for adding inline comments.
+
+**Features**:
+- White speech bubble with black plus icon
+- Appears on hover in code diff views
+- Consistent styling across all usage
+
+**Props**:
+- `onClick`: function (optional)
+- `ariaLabel`: string (default: "Add comment")
+
+**Usage**:
+```tsx
+<AddCommentButton onClick={handleAddComment} />
+```
 
 ### PullRequestsPage Component
 Location: `app/components/PullRequestsPage.tsx`
@@ -347,16 +405,25 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
 ### Completed Features
 - ✅ Click-through functionality for PR items
 - ✅ PR detail page with Context and Files tabs
-- ✅ Collapsible sections
+- ✅ Collapsible sections (Description, Discussion, Files)
 - ✅ Code diff viewer with syntax highlighting
+- ✅ File and group review functionality
+  - Individual file check buttons with green indicators
+  - Chevron toggles for expanding/collapsing diffs
+  - Group-level "Mark as reviewed" / "Mark as needs review" buttons
+  - Synchronized review state across sidebar and file cards
+- ✅ Coverage indicators with donut-shaped visualizations
+- ✅ Inline comment buttons on code lines
+- ✅ Client-side navigation using Next.js Link component
 
 ### Planned Features
 - [ ] Additional pages (Summary, Issues, Dashboard, etc.)
 - [ ] Interactive search and filtering
 - [ ] Real data integration
 - [ ] User authentication
-- [ ] Functional collapsible code diffs
-- [ ] Review comments functionality
+- [ ] Functional inline comment submission and display
+- [ ] Review comments threading and replies
+- [ ] Real-time collaboration features
 
 ## Design Decisions
 
@@ -381,11 +448,18 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
 
 ## Notes
 - All content is currently dummy data
-- Navigation between pages is functional (PR list → PR detail)
+- Navigation between pages is functional (PR list → PR detail → PR list)
+  - Uses Next.js Link component for client-side navigation
+  - Proper base path handling for GitHub Pages deployment
 - Tab switching works (Context ↔ Files)
-- Collapsible sections functional (Description, Discussion)
+- Collapsible sections functional (Description, Discussion, File Groups, Individual Files)
+- File review workflow fully functional:
+  - 6 files across 3 groups with individual and group-level review states
+  - Dual-control system: chevron for visibility, check button for review status
+  - Review state synchronized across buttons, sidebar, and visual indicators
 - **Typography**: Uses Echoes Design System with Inter (UI) and Ubuntu Mono (code) fonts
 - **Font Loading**: Fonts loaded via Next.js font optimization (next/font/google)
+- **Components**: Reusable CoverageIndicator and AddCommentButton components
 
 ## Resources
 - Design reference: SonarQube Cloud interface screenshots
@@ -397,6 +471,43 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
 ## Development History
 
 ### Recent Changes
+- **January 20, 2026**:
+  - **File Review Functionality**: Implemented comprehensive file and group review system
+    - Added individual file check buttons with green checkmark indicators
+    - Implemented chevron toggles for expanding/collapsing file diffs independently
+    - Separated check state (review status) from expand state (visibility)
+    - Created "Mark as reviewed" buttons at group level that:
+      - Mark all files in group as reviewed
+      - Collapse the entire group
+      - Toggle to "Mark as needs review" button with white stroke/text style
+      - Update files-groups sidebar with green text and tick icons
+    - Added toggle functionality to revert group review status
+    - Synchronized review state across multiple UI elements (buttons, sidebar, individual files)
+  - **Component Enhancements**:
+    - Created `CoverageIndicator` component: Donut-shaped circular indicators
+      - Full green ring for 100% coverage (all good)
+      - Full red ring for 0% coverage (all bad)
+      - Partial green/red ring for values in between
+      - Support for inverted mode (for metrics where lower is better, e.g., duplicated lines)
+    - Created `AddCommentButton` component: White speech bubble with black plus icon
+      - Reusable inline comment button for code diff views
+      - Appears on hover for each code line
+  - **Code Diff Features**:
+    - Added coverage badges to file stats (Coverage, Duplicated Lines, Issues)
+    - Integrated CoverageIndicator component for visual metrics
+    - Enhanced hover states for inline commenting
+    - Added support for 6 files across 3 groups with full review workflow
+  - **Navigation Improvements**:
+    - Updated "Pull Requests" link in sidebar to use Next.js Link component
+    - Updated breadcrumb "Pull Requests" link to use Next.js Link component
+    - Enabled proper client-side navigation between PR detail page and homepage
+  - **UI/UX Improvements**:
+    - Chevron rotation animation when expanding/collapsing files
+    - Check button color changes to green when marked as reviewed
+    - Group icons in sidebar change to green checkmarks when group is reviewed
+    - Smooth transitions for all interactive states
+    - Dual-control system: chevron for visibility, check button for review status
+
 - **January 16, 2026**:
   - **GitHub Pages Deployment**: Successfully deployed to GitHub Pages
     - Fixed npm registry authentication issue (JFrog Artifactory → public npm)
@@ -466,5 +577,5 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
 
 ---
 
-**Last Updated**: January 16, 2026
+**Last Updated**: January 20, 2026
 **Created by**: Claude Code Session

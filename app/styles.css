@@ -301,7 +301,7 @@ body {
     margin: -24px -32px 24px -32px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
     border-bottom: 1px solid var(--color-border-secondary);
     min-height: 120px;
 }
@@ -365,7 +365,7 @@ body {
     font: var(--echoes-typography-text-default-regular); /* 14px */
     color: var(--color-text-muted);
     flex-wrap: wrap;
-    margin-top: 8px;
+    margin: 0;
 }
 
 .metadata-item {
@@ -630,7 +630,7 @@ body {
     font-weight: var(--echoes-font-weight-semibold); /* 600 */
     line-height: var(--echoes-line-height-200);
     color: var(--color-text-primary);
-    margin-bottom: 8px;
+    margin: 8px 0 0 0;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1865,4 +1865,162 @@ body {
         grid-column: 2;
         font-size: 11px;
     }
+}
+
+/* Summary Page Styles */
+.warning-banner {
+    background-color: #8b7355;
+    color: #000000;
+    padding: 16px 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 24px 24px;
+    font: var(--echoes-typography-text-default-medium);
+}
+
+.btn-view-warning {
+    background-color: transparent;
+    border: 1px solid #000000;
+    color: #000000;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font: var(--echoes-typography-text-default-medium);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.btn-view-warning:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.quality-gate-section {
+    background-color: transparent;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    padding: 32px;
+    margin: 0 24px 24px 24px;
+}
+
+.quality-gate-section .quality-gate-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.quality-gate-section .quality-gate-header h2 {
+    font: var(--echoes-typography-heading-default);
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+
+.quality-gate-section .quality-gate-link {
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.quality-gate-section .quality-gate-link:hover {
+    color: var(--color-link-hover);
+}
+
+.quality-gate-section .quality-gate-status {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.status-icon-large {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-icon-large svg {
+    width: 80px;
+    height: 80px;
+}
+
+.status-text {
+    font-size: 48px;
+    font-weight: 400;
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border-primary);
+}
+
+.metric-card {
+    position: relative;
+    padding: 16px 0;
+}
+
+.metric-card:not(:nth-child(3n)) {
+    border-right: 1px solid var(--color-border-primary);
+    padding-right: 24px;
+}
+
+.metric-title {
+    font: var(--echoes-typography-text-default-semibold);
+    color: var(--color-text-secondary);
+    margin-bottom: 12px;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+}
+
+.metric-requirement {
+    font: var(--echoes-typography-text-small-regular);
+    color: var(--color-text-muted);
+}
+
+.metric-description {
+    font: var(--echoes-typography-text-small-regular);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.metric-estimate {
+    font: var(--echoes-typography-text-small-regular);
+    color: var(--color-text-muted);
+    margin-top: 8px;
+}
+
+.metric-icon {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+}
+
+.metric-info-button {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+    transition: color var(--transition-base);
+}
+
+.metric-info-button:hover {
+    color: var(--color-text-secondary);
+}
+
+.summary-content {
+    padding: 24px;
 }

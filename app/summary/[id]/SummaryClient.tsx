@@ -1,8 +1,23 @@
+'use client';
+
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 
 const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype' : '';
 
-export default function PullRequestsPage() {
+export default function SummaryClient() {
+  const params = useParams();
+  const prId = params.id as string;
+
+  const prData = {
+    number: prId,
+    title: 'SC-37654 Fix Mise',
+    version: '2',
+    branch: 'felix/fixMise2 → master',
+    commit: 'd785751e',
+    timestamp: '1 month ago'
+  };
+
   return (
     <div>
       {/* Top Navigation */}
@@ -102,8 +117,7 @@ export default function PullRequestsPage() {
             </a>
 
             <div className="sidebar-section">Analysis</div>
-
-            <a href="#" className="sidebar-link">
+            <a href="#" className="sidebar-link sidebar-link-active">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <rect x="2" y="10" width="3" height="4"/>
                 <rect x="6" y="6" width="3" height="8"/>
@@ -111,6 +125,12 @@ export default function PullRequestsPage() {
               </svg>
               Summary
             </a>
+            <Link href={`/pr/${prId}`} className="sidebar-link">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
+              </svg>
+              Review
+            </Link>
             <a href="#" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M2 2h12v12H2V2zm2 2v8h8V4H4z"/>
@@ -177,7 +197,6 @@ export default function PullRequestsPage() {
             </a>
 
             <div className="sidebar-section">Information</div>
-
             <a href="#" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 2L2 6v4l6 4 6-4V6l-6-4z"/>
@@ -191,13 +210,13 @@ export default function PullRequestsPage() {
               </svg>
               Project Information
             </a>
-            <a href="#" className="sidebar-link sidebar-link-active">
+            <Link href="/" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
               </svg>
               Pull Requests
               <span className="count-badge">10</span>
-            </a>
+            </Link>
             <a href="#" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M2 2h12v2H2V2zm0 4h8v2H2V6zm0 4h10v2H2v-2z"/>
@@ -210,7 +229,7 @@ export default function PullRequestsPage() {
 
         {/* Main Content */}
         <main className="main-content">
-          {/* Page Header - unified breadcrumb and title section */}
+          {/* Page Header */}
           <div className="page-header">
             {/* Breadcrumb */}
             <div className="breadcrumb">
@@ -218,84 +237,128 @@ export default function PullRequestsPage() {
               <span className="breadcrumb-separator">/</span>
               <a href="#" className="breadcrumb-link">asast-scanner-pipeline</a>
               <span className="breadcrumb-separator">/</span>
-              <span className="breadcrumb-current">Pull Requests</span>
+              <Link href="/" className="breadcrumb-link">Pull Requests</Link>
+              <span className="breadcrumb-separator">/</span>
+              <span className="breadcrumb-current">{prData.number} - {prData.title}</span>
             </div>
 
             {/* Title section */}
-            <div className="page-header-title-section">
-              <div>
-                <h1 className="page-title">Pull Requests</h1>
-                <div className="warning-badge">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 2l6 12H2L8 2z"/>
-                    <path d="M8 7v3M8 11h.01" stroke="currentColor" strokeWidth="1.5"/>
-                  </svg>
-                  Last analysis had warnings
-                </div>
+            <h1 className="pr-detail-title">
+              {prData.number} - {prData.title} <span className="pr-version">#{prData.version}</span>
+            </h1>
+            <div className="page-metadata">
+              <span className="metadata-item">Private</span>
+              <span className="metadata-separator"></span>
+              <span className="metadata-item">0 New Lines</span>
+              <span className="metadata-separator"></span>
+              <span className="metadata-item">Last analysis {prData.timestamp}</span>
+              <span className="metadata-separator"></span>
+              <span className="metadata-item">{prData.commit}</span>
+              <span className="metadata-separator"></span>
+              <span className="metadata-item">{prData.branch}</span>
+              <span className="metadata-separator"></span>
+              <div className="warning-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 2l6 12H2L8 2z"/>
+                  <path d="M8 7v3M8 11h.01" stroke="currentColor" strokeWidth="1.5"/>
+                </svg>
+                Last analysis had warnings
               </div>
             </div>
           </div>
 
-          {/* Search and Filter Bar */}
-          <div className="search-bar">
-            <div className="pr-count">10 Pull Requests</div>
-            <div className="search-input-wrapper">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-                <path d="M11 11l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-              <input type="text" className="search-input" placeholder="Search for Pull Requests..."/>
-            </div>
-            <button className="btn-filters">Filters</button>
-          </div>
+          {/* Warning Banner */}
+          <div className="warning-banner">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 2l8 14H2L10 2z"/>
+                    <path d="M10 7v4M10 13h.01" stroke="#000" strokeWidth="2"/>
+                  </svg>
+                  <span>Last analysis had a warning</span>
+                </div>
+                <button className="btn-view-warning">View warning</button>
+              </div>
 
-          {/* Pull Requests List */}
-          <div className="pr-list">
-            {[
-              { id: '35', title: '35 - SC-37654 Fix Mise', date: '30 days ago', commit: 'd785751e', icon: 'square' },
-              { id: '34', title: '34 - ASASTSCAN-223 License header of asast-scanner-pipeline should b...', date: '30 days ago', commit: 'ca09b179', icon: 'square' },
-              { id: '33', title: '33 - ASASTSCAN-220 Increase memory available during generation', date: '1 month ago', commit: 'e99ee76e', icon: 'square' },
-              { id: '31', title: '31 - ASASTSCAN-218 Exclude rule S6639 from generation', date: '1 month ago', commit: '1c98ce11', icon: 'square' },
-              { id: '32', title: '32 - ASASTSCAN-219 Fix ASAST pipeline regarding repox access', date: '1 month ago', commit: '9ea4f498', icon: 'square' },
-              { id: '30', title: '30 - ASASTSCAN-191 Update Java version of ASAST Scanner', date: '1 month ago', commit: '71a0e383', icon: 'grid' },
-              { id: '29', title: '29 - ASASTSCAN-196 Libraries.io token should be available in the pipeline ...', date: '1 month ago', commit: 'a869de1d', icon: 'grid' },
-              { id: '28', title: '28 - SC-35440 scripted update of SonarSource SA to SonarSource Sàrl', date: '1 month ago', commit: 'e8f9a357', icon: 'grid' },
-              { id: '27', title: '27 - ASASTSCAN-193 Add repox access token to the pipeline for the integr...', date: '1 month ago', commit: '43eb1612', icon: 'grid' },
-              { id: '26', title: '26 - SC-35844 Add required secrets', date: '1 month ago', commit: '8f76eaaf', icon: 'grid' },
-            ].map((pr, index) => (
-              <Link key={index} href={`/summary/${pr.id}`} className="pr-item">
-                <div className="pr-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
+              {/* Quality Gate Section */}
+              <div className="quality-gate-section">
+                <div className="quality-gate-header">
+                  <h2>Quality Gate: <a href="#" className="quality-gate-link">SonarSource way - Light</a></h2>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginLeft: '8px', color: 'var(--color-text-muted)' }}>
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                    <path d="M8 4v4M8 10h.01"/>
                   </svg>
                 </div>
-                <div className="pr-title">{pr.title}</div>
-                <div className="pr-status">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M2 8l4 4 8-8" stroke="#4caf50" strokeWidth="2" fill="none"/>
-                  </svg>
-                  Passed
-                </div>
-                <div className="pr-icon-small">
-                  {pr.icon === 'grid' ? (
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                      <rect x="2" y="2" width="5" height="5" rx="1"/>
-                      <rect x="9" y="2" width="5" height="5" rx="1"/>
-                      <rect x="2" y="9" width="5" height="5" rx="1"/>
-                      <rect x="9" y="9" width="5" height="5" rx="1"/>
-                    </svg>
-                  ) : (
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                      <rect x="3" y="3" width="10" height="10" rx="2"/>
-                    </svg>
-                  )}
-                </div>
-                <div className="pr-date">{pr.date}</div>
-                <div className="pr-commit">{pr.commit}</div>
-              </Link>
-            ))}
-          </div>
 
+                <div className="quality-gate-status">
+                  <div className="status-icon-large">
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                      <rect width="80" height="80" rx="4" fill="#4CAF50"/>
+                      <path d="M24 40l12 12 20-24" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <h1 className="status-text">Passed</h1>
+                </div>
+
+                {/* Metrics Grid */}
+                <div className="metrics-grid">
+                  {/* Row 1 */}
+                  <div className="metric-card">
+                    <div className="metric-title">New Issues</div>
+                    <div className="metric-value">0</div>
+                    <div className="metric-requirement">Required: ≤ 0</div>
+                  </div>
+
+                  <div className="metric-card">
+                    <div className="metric-title">Accepted Issues</div>
+                    <div className="metric-value">0</div>
+                    <div className="metric-description">Valid issues that were not fixed</div>
+                    <button className="metric-info-button">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                        <path d="M8 4v4M8 10h.01"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="metric-card">
+                    <div className="metric-title">Coverage</div>
+                    <div className="metric-value">25.0%</div>
+                    <div className="metric-description">No conditions set<br/>on 8 New Lines to cover</div>
+                    <div className="metric-estimate">50.1% Estimated after merge</div>
+                    <div className="metric-icon">
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="16" stroke="#f44336" strokeWidth="3" fill="none"/>
+                        <circle cx="20" cy="20" r="16" stroke="#4CAF50" strokeWidth="3" fill="none" strokeDasharray="100.53" strokeDashoffset="75.4" transform="rotate(-90 20 20)" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className="metric-card">
+                    <div className="metric-title">Duplications</div>
+                    <div className="metric-value">0.0%</div>
+                    <div className="metric-description">No conditions set<br/>on 16 New Lines</div>
+                    <div className="metric-estimate">0.5% Estimated after merge</div>
+                    <div className="metric-icon">
+                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <circle cx="20" cy="20" r="16" fill="#4CAF50"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="metric-card">
+                    <div className="metric-title">Security Hotspots</div>
+                    <div className="metric-value">0</div>
+                    <div className="metric-description">No conditions set</div>
+                  </div>
+
+                  <div className="metric-card">
+                    <div className="metric-title">Dependency Risks</div>
+                    <div className="metric-value">0</div>
+                    <div className="metric-description">No conditions set</div>
+                  </div>
+                </div>
+              </div>
         </main>
       </div>
     </div>

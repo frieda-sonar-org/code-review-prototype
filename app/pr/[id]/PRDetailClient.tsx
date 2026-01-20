@@ -11,6 +11,7 @@ const basePath = process.env.NODE_ENV === 'production' ? '/code-review-prototype
 
 export default function PRDetailClient() {
   const params = useParams();
+  const prId = params.id as string;
   const [showDescription, setShowDescription] = useState(true);
   const [showDiscussion, setShowDiscussion] = useState(true);
   const [activeTab, setActiveTab] = useState('context');
@@ -284,14 +285,14 @@ export default function PRDetailClient() {
 
             <div className="sidebar-section">Analysis</div>
 
-            <a href="#" className="sidebar-link">
+            <Link href={`/summary/${prId}`} className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <rect x="2" y="10" width="3" height="4"/>
                 <rect x="6" y="6" width="3" height="8"/>
                 <rect x="10" y="2" width="3" height="12"/>
               </svg>
               Summary
-            </a>
+            </Link>
             <a href="#" className="sidebar-link sidebar-link-active">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
