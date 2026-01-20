@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import AddCommentButton from '@/app/components/AddCommentButton';
 import CodeLine from '@/app/components/CodeLine';
 import CoverageIndicator from '@/app/components/CoverageIndicator';
@@ -41,6 +42,11 @@ export default function PRDetailClient() {
   const [fileChecked4, setFileChecked4] = useState(false);
   const [fileChecked5, setFileChecked5] = useState(false);
   const [fileChecked6, setFileChecked6] = useState(false);
+
+  // Group review states (true = marked as reviewed)
+  const [groupReviewed1, setGroupReviewed1] = useState(false);
+  const [groupReviewed2, setGroupReviewed2] = useState(false);
+  const [groupReviewed3, setGroupReviewed3] = useState(false);
 
   const handleLineClick = (lineId: string) => {
     setActiveCommentLine(lineId);
@@ -372,13 +378,13 @@ export default function PRDetailClient() {
               </svg>
               Project Information
             </a>
-            <a href="/" className="sidebar-link">
+            <Link href="/" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
               </svg>
               Pull Requests
               <span className="count-badge">10</span>
-            </a>
+            </Link>
             <a href="#" className="sidebar-link">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M2 2h12v2H2V2zm0 4h8v2H2V6zm0 4h10v2H2v-2z"/>
@@ -399,7 +405,7 @@ export default function PRDetailClient() {
               <span className="breadcrumb-separator">/</span>
               <a href="#" className="breadcrumb-link">asast-scanner-pipeline</a>
               <span className="breadcrumb-separator">/</span>
-              <a href="/" className="breadcrumb-link">Pull Requests</a>
+              <Link href="/" className="breadcrumb-link">Pull Requests</Link>
               <span className="breadcrumb-separator">/</span>
               <span className="breadcrumb-current">{prData.number} - {prData.title}</span>
             </div>
@@ -729,16 +735,24 @@ export default function PRDetailClient() {
                 {/* Group 1: CI/CD Workflow */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                    </svg>
+                    {groupReviewed1 ? (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
+                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                      </svg>
+                    )}
                     <div style={{ flex: 1, overflow: 'hidden' }}>
                       <div
                         className="file-group-name"
                         style={{
                           fontWeight: 500,
                           marginBottom: showGroupFiles ? '8px' : '0',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          color: groupReviewed1 ? '#4CAF50' : 'inherit'
                         }}
                         onClick={() => setShowGroupFiles(!showGroupFiles)}
                       >
@@ -802,16 +816,24 @@ export default function PRDetailClient() {
                 {/* Group 2: API Authentication */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                    </svg>
+                    {groupReviewed2 ? (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
+                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                      </svg>
+                    )}
                     <div style={{ flex: 1, overflow: 'hidden' }}>
                       <div
                         className="file-group-name"
                         style={{
                           fontWeight: 500,
                           marginBottom: showGroupFiles2 ? '8px' : '0',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          color: groupReviewed2 ? '#4CAF50' : 'inherit'
                         }}
                         onClick={() => setShowGroupFiles2(!showGroupFiles2)}
                       >
@@ -865,16 +887,24 @@ export default function PRDetailClient() {
                 {/* Group 3: Database Migration */}
                 <div className="file-group">
                   <div style={{ display: 'flex', alignItems: 'flex-start', width: '100%' }}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
-                      <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
-                    </svg>
+                    {groupReviewed3 ? (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: '#4CAF50' }}>
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+                        <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style={{ marginRight: '8px', marginTop: '2px', flexShrink: 0, color: 'var(--color-text-muted)' }}>
+                        <path d="M2 3h5l2 2h5v8H2V3z" stroke="currentColor" strokeWidth="1" fill="none"/>
+                      </svg>
+                    )}
                     <div style={{ flex: 1, overflow: 'hidden' }}>
                       <div
                         className="file-group-name"
                         style={{
                           fontWeight: 500,
                           marginBottom: showGroupFiles3 ? '8px' : '0',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          color: groupReviewed3 ? '#4CAF50' : 'inherit'
                         }}
                         onClick={() => setShowGroupFiles3(!showGroupFiles3)}
                       >
@@ -1433,6 +1463,34 @@ export default function PRDetailClient() {
                     </div>
                     )}
                   </div>
+
+                  {/* Mark as reviewed button */}
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                    <button
+                      className={groupReviewed1 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                      onClick={() => {
+                        if (!groupReviewed1) {
+                          // Mark as reviewed
+                          setFileChecked1(true);
+                          setFileChecked2(true);
+                          setFileChecked3(true);
+                          setFileExpanded1(false);
+                          setFileExpanded2(false);
+                          setFileExpanded3(false);
+                          setGroupReviewed1(true);
+                          setShowFileChanges(false); // Collapse the group
+                        } else {
+                          // Mark as needs review
+                          setFileChecked1(false);
+                          setFileChecked2(false);
+                          setFileChecked3(false);
+                          setGroupReviewed1(false);
+                        }
+                      }}
+                    >
+                      {groupReviewed1 ? 'Mark as needs review' : 'Mark as reviewed'}
+                    </button>
+                  </div>
                     </>
                   )}
                 </div>
@@ -1767,6 +1825,31 @@ export default function PRDetailClient() {
                         </div>
                         )}
                       </div>
+
+                      {/* Mark as reviewed button */}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                        <button
+                          className={groupReviewed2 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                          onClick={() => {
+                            if (!groupReviewed2) {
+                              // Mark as reviewed
+                              setFileChecked4(true);
+                              setFileChecked5(true);
+                              setFileExpanded4(false);
+                              setFileExpanded5(false);
+                              setGroupReviewed2(true);
+                              setShowFileChanges2(false); // Collapse the group
+                            } else {
+                              // Mark as needs review
+                              setFileChecked4(false);
+                              setFileChecked5(false);
+                              setGroupReviewed2(false);
+                            }
+                          }}
+                        >
+                          {groupReviewed2 ? 'Mark as needs review' : 'Mark as reviewed'}
+                        </button>
+                      </div>
                     </>
                   )}
                 </div>
@@ -1989,6 +2072,28 @@ export default function PRDetailClient() {
                           </table>
                         </div>
                         )}
+                      </div>
+
+                      {/* Mark as reviewed button */}
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                        <button
+                          className={groupReviewed3 ? "mark-needs-review-button" : "mark-reviewed-button"}
+                          onClick={() => {
+                            if (!groupReviewed3) {
+                              // Mark as reviewed
+                              setFileChecked6(true);
+                              setFileExpanded6(false);
+                              setGroupReviewed3(true);
+                              setShowFileChanges3(false); // Collapse the group
+                            } else {
+                              // Mark as needs review
+                              setFileChecked6(false);
+                              setGroupReviewed3(false);
+                            }
+                          }}
+                        >
+                          {groupReviewed3 ? 'Mark as needs review' : 'Mark as reviewed'}
+                        </button>
                       </div>
                     </>
                   )}

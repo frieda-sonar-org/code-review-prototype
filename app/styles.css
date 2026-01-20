@@ -1260,6 +1260,43 @@ body {
     color: var(--color-success);
 }
 
+.mark-reviewed-button {
+    background-color: #4a9eff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
+    cursor: pointer;
+    transition: background-color var(--transition-base);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.mark-reviewed-button:hover {
+    background-color: #3a8eef;
+}
+
+.mark-needs-review-button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font: var(--echoes-typography-text-default-medium); /* 14px, 500 weight */
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.mark-needs-review-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
 .code-diff-content {
     overflow-x: auto;
 }
