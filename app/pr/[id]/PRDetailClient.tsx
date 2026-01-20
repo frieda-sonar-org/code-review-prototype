@@ -252,9 +252,9 @@ export default function PRDetailClient() {
         {/* Sidebar */}
         <aside className="sidebar">
           <div className="project-selector">
-            <div className="project-icon">E</div>
+            <div className="project-icon">A</div>
             <div className="project-info">
-              <div className="project-name">energy-level</div>
+              <div className="project-name">asast-scanner-pipe...</div>
               <div className="project-label">Project</div>
             </div>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">

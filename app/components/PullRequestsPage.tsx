@@ -252,9 +252,9 @@ export default function PullRequestsPage() {
           {/* Pull Requests List */}
           <div className="pr-list">
             {[
-              { id: '35', title: '35 - SC-37654 Fix Mise', date: '30 days ago', commit: 'd785751e', icon: 'square' },
-              { id: '34', title: '34 - ASASTSCAN-223 License header of asast-scanner-pipeline should b...', date: '30 days ago', commit: 'ca09b179', icon: 'square' },
-              { id: '33', title: '33 - ASASTSCAN-220 Increase memory available during generation', date: '1 month ago', commit: 'e99ee76e', icon: 'square' },
+              { id: '35', title: '35 - SC-37654 Fix Mise', date: 'a day ago', commit: 'd785751e', icon: 'square' },
+              { id: '34', title: '34 - ASASTSCAN-223 License header of asast-scanner-pipeline should b...', date: '2 days ago', commit: 'ca09b179', icon: 'square' },
+              { id: '33', title: '33 - ASASTSCAN-220 Increase memory available during generation', date: '3 days ago', commit: 'e99ee76e', icon: 'square' },
               { id: '31', title: '31 - ASASTSCAN-218 Exclude rule S6639 from generation', date: '1 month ago', commit: '1c98ce11', icon: 'square' },
               { id: '32', title: '32 - ASASTSCAN-219 Fix ASAST pipeline regarding repox access', date: '1 month ago', commit: '9ea4f498', icon: 'square' },
               { id: '30', title: '30 - ASASTSCAN-191 Update Java version of ASAST Scanner', date: '1 month ago', commit: '71a0e383', icon: 'grid' },
