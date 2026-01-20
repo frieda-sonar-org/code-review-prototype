@@ -291,9 +291,9 @@ export default function SummaryClient() {
 
                 <div className="quality-gate-status">
                   <div className="status-icon-large">
-                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                      <rect width="80" height="80" rx="4" fill="#4CAF50"/>
-                      <path d="M24 40l12 12 20-24" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                      <rect width="40" height="40" rx="2" fill="#4CAF50"/>
+                      <path d="M10 20l6 6 14-14" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
                     </svg>
                   </div>
                   <h1 className="status-text">Passed</h1>

@@ -186,6 +186,52 @@
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
   --transition-slow: 300ms ease;
+
+  /* === ECHOES DESIGN SYSTEM DIMENSIONS === */
+
+  /* Spacing */
+  --echoes-dimension-space-0: 0px;
+  --echoes-dimension-space-25: .125rem;
+  --echoes-dimension-space-50: .25rem;
+  --echoes-dimension-space-75: .375rem;
+  --echoes-dimension-space-100: .5rem;
+  --echoes-dimension-space-150: .75rem;
+  --echoes-dimension-space-200: 1rem;
+  --echoes-dimension-space-250: 1.25rem;
+  --echoes-dimension-space-300: 1.5rem;
+  --echoes-dimension-space-400: 2rem;
+  --echoes-dimension-space-500: 2.5rem;
+  --echoes-dimension-space-600: 3rem;
+  --echoes-dimension-space-800: 4rem;
+
+  /* Width */
+  --echoes-dimension-width-0: 0px;
+  --echoes-dimension-width-25: .125rem;
+  --echoes-dimension-width-50: .25rem;
+  --echoes-dimension-width-75: .375rem;
+  --echoes-dimension-width-100: .5rem;
+  --echoes-dimension-width-150: .75rem;
+  --echoes-dimension-width-200: 1rem;
+  --echoes-dimension-width-250: 1.25rem;
+  --echoes-dimension-width-300: 1.5rem;
+  --echoes-dimension-width-400: 2rem;
+  --echoes-dimension-width-450: 2.25rem;
+  --echoes-dimension-width-500: 2.5rem;
+  --echoes-dimension-width-600: 3rem;
+  --echoes-dimension-width-700: 3.5rem;
+  --echoes-dimension-width-800: 4rem;
+  --echoes-dimension-width-5000: 25rem;
+
+  /* Height */
+  --echoes-dimension-height-100: .25rem;
+  --echoes-dimension-height-150: .375rem;
+  --echoes-dimension-height-200: .5rem;
+  --echoes-dimension-height-400: 1rem;
+  --echoes-dimension-height-500: 1.25rem;
+  --echoes-dimension-height-600: 1.5rem;
+  --echoes-dimension-height-800: 2rem;
+  --echoes-dimension-height-900: 2.25rem;
+  --echoes-dimension-height-1000: 2.5rem;
 }
 
 

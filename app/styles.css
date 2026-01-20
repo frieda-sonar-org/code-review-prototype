@@ -1927,25 +1927,25 @@ body {
 .quality-gate-section .quality-gate-status {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: var(--echoes-dimension-space-300);
     margin-bottom: 48px;
 }
 
 .status-icon-large {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .status-icon-large svg {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
 }
 
 .status-text {
-    font-size: 48px;
+    font-size: 24px;
     font-weight: 400;
     margin: 0;
     color: var(--color-text-primary);
