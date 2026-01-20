@@ -225,13 +225,13 @@ export default function PullRequestsPage() {
             <div className="page-header-title-section">
               <div>
                 <h1 className="page-title">Pull Requests</h1>
-                <div className="warning-badge">
+                {/* <div className="warning-badge">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 2l6 12H2L8 2z"/>
                     <path d="M8 7v3M8 11h.01" stroke="currentColor" strokeWidth="1.5"/>
                   </svg>
                   Last analysis had warnings
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

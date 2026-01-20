@@ -354,7 +354,7 @@ body {
     font-weight: var(--echoes-font-weight-semibold); /* 600 */
     line-height: var(--echoes-line-height-200);
     color: var(--color-text-primary);
-    margin-bottom: 8px;
+    margin: 8px 0 0 0;
 }
 
 /* Metadata line - appears below title */

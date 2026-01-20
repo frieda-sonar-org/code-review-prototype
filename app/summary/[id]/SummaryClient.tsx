@@ -256,14 +256,14 @@ export default function SummaryClient() {
               <span className="metadata-item">{prData.commit}</span>
               <span className="metadata-separator"></span>
               <span className="metadata-item">{prData.branch}</span>
-              <span className="metadata-separator"></span>
+              {/* <span className="metadata-separator"></span>
               <div className="warning-badge">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M8 2l6 12H2L8 2z"/>
                   <path d="M8 7v3M8 11h.01" stroke="currentColor" strokeWidth="1.5"/>
                 </svg>
                 Last analysis had warnings
-              </div>
+              </div> */}
             </div>
           </div>
 
