@@ -263,8 +263,7 @@ export default function PullRequestsPage() {
               { id: '27', title: '27 - ASASTSCAN-193 Add repox access token to the pipeline for the integr...', date: '1 month ago', commit: '43eb1612', icon: 'grid' },
               { id: '26', title: '26 - SC-35844 Add required secrets', date: '1 month ago', commit: '8f76eaaf', icon: 'grid' },
             ].map((pr, index) => (
-              <Link key={index} href={`/summary/${pr.id}`} className="pr-item">
-                <div className="pr-icon">
+                    <Link key={index} href={`/pr/${pr.id}`} className="pr-item">                <div className="pr-icon">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M4 2l4 4-4 4V2zM8 6l4 4-4 4V6z"/>
                   </svg>
